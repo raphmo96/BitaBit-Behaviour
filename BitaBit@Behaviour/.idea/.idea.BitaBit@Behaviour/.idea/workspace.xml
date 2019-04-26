@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="da7a84d1-e104-4452-8eb8-263120f898be" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.BitaBit@Behaviour/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.BitaBit@Behaviour/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.BitaBit@Behaviour/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.BitaBit@Behaviour/.idea/vcs.xml" afterDir="false" />
-    </list>
+    <list default="true" id="da7a84d1-e104-4452-8eb8-263120f898be" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +34,49 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/ApplicationLauncher.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <marker date="1537883871193" expanded="false" signature="6:78" ph="..." />
+                <marker date="1537883871193" expanded="true" signature="128:237" ph="{...}" />
+                <marker date="1537883871193" expanded="true" signature="155:235" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/DontDestroyOnLoad.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <marker date="1528989098207" expanded="false" signature="6:78" ph="..." />
+                <marker date="1528989098207" expanded="true" signature="127:217" ph="{...}" />
+                <marker date="1528989098207" expanded="true" signature="164:215" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/Singleton.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <marker date="1536934092796" expanded="false" signature="6:78" ph="..." />
+                <marker date="1536934092796" expanded="true" signature="148:487" ph="{...}" />
+                <marker date="1536934092796" expanded="true" signature="215:262" ph="{...}" />
+                <marker date="1536934092796" expanded="true" signature="299:485" ph="{...}" />
+                <marker date="1536934092796" expanded="true" signature="337:391" ph="{...}" />
+                <marker date="1536934092796" expanded="true" signature="404:457" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Imports/SerializableDictionary/Example/Editor/UserSerializableDictionaryPropertyDrawers.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="90">
@@ -57,15 +94,17 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Managers/Audio/AudioManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Imports/SerializableDictionary/Example/Editor/UserSerializableDictionaryPropertyDrawers.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Managers/SceneLoadingManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ApplicationLauncher.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Managers/Pool/PoolManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Managers/Audio/AudioManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Imports/SerializableDictionary/Example/Editor/UserSerializableDictionaryPropertyDrawers.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Singleton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Managers/Pool/PoolableItem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DontDestroyOnLoad.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enums/EPoolType.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../Bart/B3/Project/Beta/Assets/Scripts/Extensions/EnumExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enums/EEventID.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Managers/Pool/PoolManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enums/EScenes.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -143,12 +182,12 @@
       <workItem from="1556249105490" duration="189000" />
       <workItem from="1556249335033" duration="567000" />
       <workItem from="1556250013687" duration="557000" />
-      <workItem from="1556250623375" duration="24000" />
+      <workItem from="1556250623375" duration="313000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1752000" />
+    <option name="totallyTimeSpent" value="2041000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -161,7 +200,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="62" y="42" width="1440" height="780" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.26811594" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -307,18 +345,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/ApplicationLauncher.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="8" column="67" lean-forward="true" selection-start-line="8" selection-start-column="67" selection-end-line="8" selection-end-column="67" />
-          <folding>
-            <marker date="1537883871193" expanded="false" signature="6:78" ph="..." />
-            <marker date="1537883871193" expanded="true" signature="128:237" ph="{...}" />
-            <marker date="1537883871193" expanded="true" signature="155:235" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Enums/EScenes.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -359,6 +385,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Imports/SerializableDictionary/Example/Editor/UserSerializableDictionaryPropertyDrawers.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <marker date="1556250646761" expanded="false" signature="6:97" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Managers/Audio/AudioManager.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -381,12 +417,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Imports/SerializableDictionary/Example/Editor/UserSerializableDictionaryPropertyDrawers.cs">
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/ApplicationLauncher.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        <state>
           <folding>
-            <marker date="1556250646761" expanded="false" signature="6:97" ph="..." />
+            <marker date="1537883871193" expanded="false" signature="6:78" ph="..." />
+            <marker date="1537883871193" expanded="true" signature="128:237" ph="{...}" />
+            <marker date="1537883871193" expanded="true" signature="155:235" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/DontDestroyOnLoad.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1528989098207" expanded="false" signature="6:78" ph="..." />
+            <marker date="1528989098207" expanded="true" signature="127:217" ph="{...}" />
+            <marker date="1528989098207" expanded="true" signature="164:215" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Singleton.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1536934092796" expanded="false" signature="6:78" ph="..." />
+            <marker date="1536934092796" expanded="true" signature="148:487" ph="{...}" />
+            <marker date="1536934092796" expanded="true" signature="215:262" ph="{...}" />
+            <marker date="1536934092796" expanded="true" signature="299:485" ph="{...}" />
+            <marker date="1536934092796" expanded="true" signature="337:391" ph="{...}" />
+            <marker date="1536934092796" expanded="true" signature="404:457" ph="{...}" />
           </folding>
         </state>
       </provider>
