@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UpgradeManager : Singleton<UpgradeManager>
+public class PlayerManager : Singleton<PlayerManager>
 {
     [SerializeField]
     private Slider m_LifeSlider;
@@ -78,7 +78,7 @@ public class UpgradeManager : Singleton<UpgradeManager>
         m_RessourceSlider.maxValue += 0.2f;
         m_RessourceSlider.gameObject.transform.localScale += new Vector3(0.2f, 0f, 0f);
         StartCoroutine(ShowText("Ressource bar upgraded"));
-    }
+    }    
 
     private IEnumerator ShowText(string text)
     {
