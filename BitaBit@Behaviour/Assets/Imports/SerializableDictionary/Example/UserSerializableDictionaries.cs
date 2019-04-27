@@ -14,6 +14,9 @@ public class PoolTableDictionnary : SerializableDictionary<EPoolType, GameObject
 [Serializable]
 public class StringAudioClipDictionary : SerializableDictionary<string, AudioClip> { }
 
+[Serializable]
+public class LegDictionary : SerializableDictionary<SpiderController.ELeg, SpiderController.Leg> { }
+
 
 //Examples of how to use;
 [Serializable]

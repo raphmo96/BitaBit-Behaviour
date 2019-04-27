@@ -10,7 +10,7 @@ public class OutpostShop : MonoBehaviour
     [SerializeField]
     private int m_OutPostIndex;
 
-    private float m_ShopRadius = 40.0f;
+    private float m_ShopRadius = 8.0f;
 
     private void Start()
     {
@@ -26,18 +26,25 @@ public class OutpostShop : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        UpgradeManager.Instance.SpendRessources();
+        PlayerManager.Instance.SpendRessources();
+        GetComponentInChildren<GearRotation>().Activation();
 
         switch(m_OutPostIndex)
         {
-            case 0: /* ADD ANTENNA */ break; 
-            case 1: UpgradeManager.Instance.UpgradeLifeBar(); break;
-            case 2: UpgradeManager.Instance.UpgradeRessourcesBar(); break;
-            case 3: UpgradeManager.Instance.UpgradeLifeBar(); break;
-            case 4: UpgradeManager.Instance.UpgradeRessourcesBar(); break;
+            case 0:
+                /* ADD ANTENNA */
+                break; 
+            case 1:
+                PlayerManager.Instance.UpgradeLifeBar();
+                /* ADD Cargo Visual */
+                break;
+            case 2:
+                PlayerManager.Instance.UpgradeRessourcesBar();
+                /* Upgrade Cargo Visual with another visual*/
+                break;
+            case 3: PlayerManager.Instance.UpgradeLifeBar(); break;
+            case 4: PlayerManager.Instance.UpgradeRessourcesBar(); break;
 
         }
-
-        // Make Asset appear *******
     }
 }
