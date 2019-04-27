@@ -7,6 +7,7 @@ using UnityEditor;
 [CustomPropertyDrawer(typeof(StringColorArrayDictionary))]
 [CustomPropertyDrawer(typeof(PoolTableDictionnary))]
 [CustomPropertyDrawer(typeof(StringAudioClipDictionary))]
+[CustomPropertyDrawer(typeof(LegDictionary))]
 public class AnySerializableDictionaryPropertyDrawer : SerializableDictionaryPropertyDrawer { }
 
 [CustomPropertyDrawer(typeof(ColorArrayStorage))]
