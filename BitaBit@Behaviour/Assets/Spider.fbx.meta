@@ -55,6 +55,12 @@ ModelImporter:
     4300004: LowerBody
     4300006: Leg
     4300008: Foot
+    4300010: Leg_1
+    4300012: Foot_1
+    4300014: Leg_2
+    4300016: Foot_2
+    4300018: Leg_3
+    4300020: Foot_3
   externalObjects: {}
   materials:
     importMaterials: 1
