@@ -5,8 +5,7 @@ using UnityEngine;
 public class Antenna : MonoBehaviour
 {
     private bool m_ShowDestination = false;
-
-    private Vector3 m_Destination = new Vector3();
+    
     [SerializeField]
     private float m_RotSpeed = 1f;
 
@@ -15,7 +14,6 @@ public class Antenna : MonoBehaviour
         if(m_ShowDestination)
         {
             ShowDestination();
-
         }
         else
         {
@@ -30,7 +28,11 @@ public class Antenna : MonoBehaviour
 
     private void ShowDestination()
     {
-
+        transform.LookAt(PlayerManager.Instance.m_Outposts[PlayerManager.Instance.GetOutpostIndex()].transform.position);
     }
 
+    public void ActivateDestination()
+    {
+        m_ShowDestination = true;
+    }
 }

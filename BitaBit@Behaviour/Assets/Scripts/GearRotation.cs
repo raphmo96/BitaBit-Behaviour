@@ -5,7 +5,7 @@ using UnityEngine;
 public class GearRotation : MonoBehaviour
 {
 
-    private bool m_IsTurning = true;
+    private bool m_IsTurning = false;
 
     private void Update()
     {

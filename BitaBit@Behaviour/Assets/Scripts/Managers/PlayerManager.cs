@@ -14,6 +14,12 @@ public class PlayerManager : Singleton<PlayerManager>
     [SerializeField]
     private Text m_Text;
 
+    public GameObject m_Antenna;
+    [SerializeField]
+    private GameObject m_Cargo;
+    [SerializeField]
+    private GameObject m_CargoUpgrade;
+
     private float m_LifeValue = 1.0f;
     private float m_RessourcesValue = 0.0f;
 
@@ -23,6 +29,9 @@ public class PlayerManager : Singleton<PlayerManager>
 
     [SerializeField]
     private bool m_SpendRessources = false;
+
+    public List<OutpostShop> m_Outposts = new List<OutpostShop>();
+    private int m_OutpostIndex = 0;
 
     private void Start()
     {
@@ -87,5 +96,30 @@ public class PlayerManager : Singleton<PlayerManager>
 
         yield return new WaitForSeconds(3.0f);
         m_Panel.SetActive(false);
+    }
+
+    public void ActivateAntenna()
+    {
+        m_Antenna.SetActive(true);
+    }
+
+    public void ActivateCargo()
+    {
+        m_Cargo.SetActive(true);
+    }
+
+    public void ActivateCargoUpgrade()
+    {
+        m_CargoUpgrade.SetActive(true);
+    }
+
+    public void NextOutpostIndex()
+    {
+        m_OutpostIndex++;
+    }
+
+    public int GetOutpostIndex()
+    {
+        return m_OutpostIndex;
     }
 }
