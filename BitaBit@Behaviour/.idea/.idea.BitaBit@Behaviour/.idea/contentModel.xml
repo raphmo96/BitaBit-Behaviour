@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Users\pseud\.Rider2018.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\pseud\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_BitaBit@Behaviour.1087689293.00" t="ExcludeRecursive" />
-    <e p="C:\Users\pseud\Documents\Github\Bitabit@Behaviour\Bitabit@Behaviour" t="IncludeRecursive">
+    <e p="C:\Users\pseud\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_BitaBit@Behaviour.1362984448.00" t="ExcludeRecursive" />
+    <e p="C:\Users\pseud\Documents\Github\BitaBit-Behaviour\Bitabit@Behaviour" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Imports" t="Include">
@@ -32,8 +34,192 @@
             <e p="SerializableDictionary.cs" t="Include" />
           </e>
         </e>
+        <e p="Plugins" t="Include">
+          <e p="Controller" t="Include">
+            <e p="Assets" t="Include">
+              <e p="Editor" t="Include">
+                <e p="PackageExporter.cs" t="Include" />
+                <e p="VersionUpdater.cs" t="Include" />
+              </e>
+              <e p="InControl" t="Include">
+                <e p="Editor" t="Include">
+                  <e p="InControlBuilder.cs" t="Include" />
+                  <e p="InControlManagerEditor.cs" t="Include" />
+                  <e p="InputManagerAssetGenerator.cs" t="Include" />
+                  <e p="ProfileListGenerator.cs" t="Include" />
+                  <e p="ReorderableList" t="Include">
+                    <e p="GenericListAdaptor.cs" t="Include" />
+                    <e p="Internal" t="Include">
+                      <e p="GUIHelper.cs" t="Include" />
+                      <e p="ReorderableListResources.cs" t="Include" />
+                    </e>
+                    <e p="IReorderableListAdaptor.cs" t="Include" />
+                    <e p="ReorderableListControl.cs" t="Include" />
+                    <e p="ReorderableListFlags.cs" t="Include" />
+                    <e p="ReorderableListGUI.cs" t="Include" />
+                    <e p="SerializedPropertyAdaptor.cs" t="Include" />
+                  </e>
+                </e>
+                <e p="Examples" t="Include">
+                  <e p="Basic" t="Include">
+                    <e p="CubeController.cs" t="Include" />
+                  </e>
+                  <e p="CustomProfile" t="Include">
+                    <e p="CubeController.cs" t="Include" />
+                    <e p="KeyboardAndMouseProfile.cs" t="Include" />
+                  </e>
+                  <e p="Gyro" t="Include">
+                    <e p="CubeController.cs" t="Include" />
+                    <e p="GyroProfile.cs" t="Include" />
+                  </e>
+                  <e p="InterfaceMovement" t="Include">
+                    <e p="Button.cs" t="Include" />
+                    <e p="ButtonFocus.cs" t="Include" />
+                    <e p="ButtonManager.cs" t="Include" />
+                  </e>
+                  <e p="Multiplayer" t="Include">
+                    <e p="CubeController.cs" t="Include" />
+                  </e>
+                </e>
+                <e p="README" t="Include">
+                  <e p="README.txt" t="Include" />
+                </e>
+                <e p="Source" t="Include">
+                  <e p="Compatibility" t="Include">
+                    <e p="HeaderAttribute.cs" t="Include" />
+                    <e p="RangeAttribute.cs" t="Include" />
+                    <e p="SpaceAttribute.cs" t="Include" />
+                  </e>
+                  <e p="Components" t="Include">
+                    <e p="InControlManager.cs" t="Include" />
+                  </e>
+                  <e p="Control" t="Include">
+                    <e p="InputControl.cs" t="Include" />
+                    <e p="InputControlMapping.cs" t="Include" />
+                    <e p="InputControlSource.cs" t="Include" />
+                    <e p="InputControlState.cs" t="Include" />
+                    <e p="InputControlType.cs" t="Include" />
+                    <e p="OneAxisInputControl.cs" t="Include" />
+                    <e p="TwoAxisInputControl.cs" t="Include" />
+                  </e>
+                  <e p="Debug" t="Include">
+                    <e p="Logger.cs" t="Include" />
+                  </e>
+                  <e p="Device" t="Include">
+                    <e p="InputDevice.cs" t="Include" />
+                    <e p="InputDeviceManager.cs" t="Include" />
+                  </e>
+                  <e p="InputManager.cs" t="Include" />
+                  <e p="Unity" t="Include">
+                    <e p="ControlSources" t="Include">
+                      <e p="UnityAnalogSource.cs" t="Include" />
+                      <e p="UnityButtonSource.cs" t="Include" />
+                      <e p="UnityGyroAxisSource.cs" t="Include" />
+                      <e p="UnityKeyCodeAxisSource.cs" t="Include" />
+                      <e p="UnityKeyCodeComboSource.cs" t="Include" />
+                      <e p="UnityKeyCodeSource.cs" t="Include" />
+                      <e p="UnityMouseAxisSource.cs" t="Include" />
+                      <e p="UnityMouseButtonSource.cs" t="Include" />
+                    </e>
+                    <e p="DeviceProfiles" t="Include">
+                      <e p="AmazonFireTVProfile.cs" t="Include" />
+                      <e p="AmazonFireTVRemoteProfile.cs" t="Include" />
+                      <e p="AndroidTVProfile.cs" t="Include" />
+                      <e p="AndroidTVRemoteProfile.cs" t="Include" />
+                      <e p="AppleMFiProfile.cs" t="Include" />
+                      <e p="ExecutionerXProfile.cs" t="Include" />
+                      <e p="GameStickLinuxProfile.cs" t="Include" />
+                      <e p="GameStickProfile.cs" t="Include" />
+                      <e p="GenericAndroidProfile.cs" t="Include" />
+                      <e p="GenericBlackberryProfile.cs" t="Include" />
+                      <e p="GenericLinuxProfile.cs" t="Include" />
+                      <e p="GoogleNexusPlayerProfile.cs" t="Include" />
+                      <e p="GoogleNexusPlayerRemoteProfile.cs" t="Include" />
+                      <e p="GreenThrottleAtlasAndroidProfile.cs" t="Include" />
+                      <e p="HamaBlackForceWinProfile.cs" t="Include" />
+                      <e p="LogitechF310LinuxProfile.cs" t="Include" />
+                      <e p="LogitechF310ModeDMacProfile.cs" t="Include" />
+                      <e p="LogitechF310ModeDWinProfile.cs" t="Include" />
+                      <e p="LogitechF310ModeXMacProfile.cs" t="Include" />
+                      <e p="LogitechF310ModeXWinProfile.cs" t="Include" />
+                      <e p="LogitechF510LinuxProfile.cs" t="Include" />
+                      <e p="LogitechF510WinProfile.cs" t="Include" />
+                      <e p="LogitechF710LinuxProfile.cs" t="Include" />
+                      <e p="LogitechF710MacProfile.cs" t="Include" />
+                      <e p="LogitechF710ModeDWinProfile.cs" t="Include" />
+                      <e p="LogitechF710ModeXWinProfile.cs" t="Include" />
+                      <e p="LogitechRumblePad2MacProfile.cs" t="Include" />
+                      <e p="LogitechRumblePad2WinProfile.cs" t="Include" />
+                      <e p="LogitechWingManWinProfile.cs" t="Include" />
+                      <e p="MaxFireBlaze5WinProfile.cs" t="Include" />
+                      <e p="MogaProLinuxProfile.cs" t="Include" />
+                      <e p="MogaProMacProfile.cs" t="Include" />
+                      <e p="MogaProWinProfile.cs" t="Include" />
+                      <e p="NatecGenesisP44WinProfile.cs" t="Include" />
+                      <e p="NVidiaShieldAndroidProfile.cs" t="Include" />
+                      <e p="NVidiaShieldWinProfile.cs" t="Include" />
+                      <e p="OuyaLinuxProfile.cs" t="Include" />
+                      <e p="OuyaWinProfile.cs" t="Include" />
+                      <e p="PlayStation2WinProfile.cs" t="Include" />
+                      <e p="PlayStation3AndroidProfile.cs" t="Include" />
+                      <e p="PlayStation3LinuxProfile.cs" t="Include" />
+                      <e p="PlayStation3MacProfile.cs" t="Include" />
+                      <e p="PlayStation3ShenghicWinProfile.cs" t="Include" />
+                      <e p="PlayStation3WinProfile.cs" t="Include" />
+                      <e p="PlayStation4AndroidProfile.cs" t="Include" />
+                      <e p="PlayStation4LinuxProfile.cs" t="Include" />
+                      <e p="PlayStation4MacBTProfile.cs" t="Include" />
+                      <e p="PlayStation4MacUSBProfile.cs" t="Include" />
+                      <e p="PlayStation4Profile.cs" t="Include" />
+                      <e p="PlayStation4WinProfile.cs" t="Include" />
+                      <e p="PlayStationVitaPSMProfile.cs" t="Include" />
+                      <e p="SamsungGP20AndroidProfile.cs" t="Include" />
+                      <e p="SpeedlinkStrikeMacProfile.cs" t="Include" />
+                      <e p="SpeedlinkStrikeWinProfile.cs" t="Include" />
+                      <e p="SteelSeriesFreeLinuxProfile.cs" t="Include" />
+                      <e p="SteelSeriesFreeMacProfile.cs" t="Include" />
+                      <e p="SteelSeriesFreeWinProfile.cs" t="Include" />
+                      <e p="ValveStreamingWinProfile.cs" t="Include" />
+                      <e p="Xbox360AndroidProfile.cs" t="Include" />
+                      <e p="Xbox360LinuxProfile.cs" t="Include" />
+                      <e p="Xbox360MacProfile.cs" t="Include" />
+                      <e p="Xbox360WinProfile.cs" t="Include" />
+                      <e p="XboxOneMacProfile.cs" t="Include" />
+                      <e p="XboxOneProfile.cs" t="Include" />
+                      <e p="XboxOneWinProfile.cs" t="Include" />
+                    </e>
+                    <e p="UnityInputDevice.cs" t="Include" />
+                    <e p="UnityInputDeviceManager.cs" t="Include" />
+                    <e p="UnityInputDeviceProfile.cs" t="Include" />
+                    <e p="UnityInputDeviceProfileList.cs" t="Include" />
+                    <e p="UnityUnknownDeviceProfile.cs" t="Include" />
+                  </e>
+                  <e p="Utility" t="Include">
+                    <e p="SingletonMonoBehavior.cs" t="Include" />
+                    <e p="Utility.cs" t="Include" />
+                  </e>
+                  <e p="VersionInfo.cs" t="Include" />
+                  <e p="XInput" t="Include">
+                    <e p="XInputDevice.cs" t="Include" />
+                    <e p="XInputDeviceManager.cs" t="Include" />
+                    <e p="XInputDotNetPure" t="Include">
+                      <e p="GamePad.cs" t="Include" />
+                      <e p="Utils.cs" t="Include" />
+                    </e>
+                  </e>
+                </e>
+                <e p="Test" t="Include">
+                  <e p="TestInputManager.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+          </e>
+        </e>
         <e p="Scripts" t="Include">
           <e p="ApplicationLauncher.cs" t="Include" />
+          <e p="Controller" t="Include">
+            <e p="SpiderController.cs" t="Include" />
+          </e>
           <e p="DontDestroyOnLoad.cs" t="Include" />
           <e p="Editor" t="Include">
             <e p="ModelImportSettings.cs" t="Include" />
@@ -58,6 +244,9 @@
               <e p="PoolManager.cs" t="Include" />
             </e>
             <e p="SceneLoadingManager.cs" t="Include" />
+          </e>
+          <e p="MapMaking" t="Include">
+            <e p="MapGenerator.cs" t="Include" />
           </e>
           <e p="Singleton.cs" t="Include" />
         </e>
