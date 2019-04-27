@@ -6,7 +6,7 @@ using UnityEngine;
 public class MapGenerator : MonoBehaviour
 {
     public Texture2D m_MapNoise;
-    public int m_Width;
+    public ulong m_Width;
 
     public Mesh m_Mesh;
     public MeshFilter m_MeshFilter;
@@ -63,9 +63,9 @@ public class MapGenerator : MonoBehaviour
         int vertice = 0;
 
         //Set all the vertices positions.
-        for (int y = 0; y <= m_Width; y++)
+        for (ulong y = 0; y <= m_Width; y++)
         {
-            for (int x = 0; x <= m_Width; x++)
+            for (ulong x = 0; x <= m_Width; x++)
             {
                 m_Vertices[vertice] = new Vector3(x, 0 , y);
                 vertice++;
@@ -82,20 +82,20 @@ public class MapGenerator : MonoBehaviour
         int tris = 0;
 
         //Generate squares for each height division
-        for (int y = 0; y < m_Width; y++)
+        for (ulong y = 0; y < m_Width; y++)
         {
             //Generate two triangle to form a square for each width division
-            for (int x = 0; x < m_Width; x++)
+            for (ulong x = 0; x < m_Width; x++)
             {
                 //First triangle
                 m_Triangles[tris] = vertice;
-                m_Triangles[tris + 1] = vertice + m_Width + 1;
+                m_Triangles[tris + 1] = vertice + (int)m_Width + 1;
                 m_Triangles[tris + 2] = vertice + 1;
 
                 //Second triangle
                 m_Triangles[tris + 3] = vertice + 1;
-                m_Triangles[tris + 4] = vertice + m_Width + 1;
-                m_Triangles[tris + 5] = vertice + m_Width + 1 + 1;
+                m_Triangles[tris + 4] = vertice + (int)m_Width + 1;
+                m_Triangles[tris + 5] = vertice + (int)m_Width + 1 + 1;
 
                 tris += 6;
                 vertice++;
