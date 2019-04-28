@@ -14,9 +14,6 @@ public class OutpostShop : MonoBehaviour
 
     private bool m_PlaySFX;
 
-    [SerializeField]
-    private float m_DistanceToPlay = 250f;
-
     private SphereCollider m_Collider;
 
     [SerializeField]

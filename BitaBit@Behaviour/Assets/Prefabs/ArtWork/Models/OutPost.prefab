@@ -97,8 +97,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Player: {fileID: 0}
   m_FactoryLoop: {fileID: 8300000, guid: ab8655bdc847d6d41a4ac7138e8691f0, type: 3}
-  m_ConvertLoop: {fileID: 0}
-  m_DistanceToPlay: 250
   m_OutPostIndex: 1
 --- !u!135 &5860998948634717938
 SphereCollider:
@@ -125,13 +123,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 90
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -169,7 +167,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
