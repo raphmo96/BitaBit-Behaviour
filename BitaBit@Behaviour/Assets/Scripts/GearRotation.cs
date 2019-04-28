@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class GearRotation : MonoBehaviour
 {
-
+    [SerializeField]
+    private int m_Index = 1;
     private bool m_IsTurning = true;
 
     private void Update()
     {
         if(m_IsTurning)
         {
-            transform.Rotate(Vector3.forward);
+            transform.Rotate(Vector3.forward * m_Index);
         }
     }
 
