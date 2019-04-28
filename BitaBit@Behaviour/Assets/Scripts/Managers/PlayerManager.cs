@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 
-public class PlayerManager : Singleton<PlayerManager>
+public class PlayerManager : MonoBehaviour
 {
     [SerializeField]
     private Slider m_LifeSlider;
@@ -12,7 +13,7 @@ public class PlayerManager : Singleton<PlayerManager>
     [SerializeField]
     private GameObject m_Panel;
     [SerializeField]
-    private Text m_Text;
+    private TextMeshProUGUI m_Text;
 
     public GameObject m_Antenna;
     [SerializeField]
@@ -35,12 +36,14 @@ public class PlayerManager : Singleton<PlayerManager>
 
     private void Start()
     {
+        AudioManager.Instance.PlayMusic("SceneOfficielJeu");
         m_LifeSlider.value = m_LifeValue;
         m_RessourceSlider.value = m_RessourcesValue;
         m_Panel.SetActive(false);
         m_Antenna.SetActive(false);
         m_Cargo.SetActive(false);
         m_CargoUpgrade.SetActive(false);
+        GameManager.Instance.Player = this;
     }
 
     private void Update()

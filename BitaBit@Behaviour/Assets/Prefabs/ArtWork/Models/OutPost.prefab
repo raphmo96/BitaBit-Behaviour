@@ -27,9 +27,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1002448749958281723}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 5267545651111000281}
   - {fileID: 5218054532128485803}
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba988094985e78e4d9f22c04b65d59b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_OutPostIndex: 0
+  m_OutPostIndex: 1
 --- !u!135 &5860998948634717938
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -296,11 +296,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1002448749958243803}
     m_Modifications:
-    - target: {fileID: 1885897020583070150, guid: af7436827fbf4cd438ffc7eb3b559f6f,
-        type: 3}
-      propertyPath: m_Name
-      value: Gear
-      objectReference: {fileID: 0}
     - target: {fileID: 1885897020583302630, guid: af7436827fbf4cd438ffc7eb3b559f6f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -355,6 +350,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1885897020583070150, guid: af7436827fbf4cd438ffc7eb3b559f6f,
+        type: 3}
+      propertyPath: m_Name
+      value: Gear
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af7436827fbf4cd438ffc7eb3b559f6f, type: 3}

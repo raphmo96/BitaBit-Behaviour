@@ -20,52 +20,48 @@ public class OutpostShop : MonoBehaviour
         m_Collider.radius = m_ShopRadius;
     }
 
-
-    private void Update()
+    private void OnTriggerEnter(Collider aOther)
     {
-
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (!m_IsDiscovered)
+        PlayerManager player = aOther.GetComponent<PlayerManager>();
+        if (player != null)
         {
-            m_IsDiscovered = true;
 
-            PlayerManager.Instance.SpendRessources();
-            Component[] gears = GetComponentsInChildren<GearRotation>();
-            foreach (GearRotation gear in gears)
-                gear.Activation();
-
-            switch (m_OutPostIndex)
+            if (!m_IsDiscovered)
             {
-                case 1:
-                    PlayerManager.Instance.ActivateAntenna();
-                    break;
-                case 2:
+                m_IsDiscovered = true;
 
-                    PlayerManager.Instance.NextOutpostIndex();
-                    PlayerManager.Instance.UpgradeAntenna();
-                    
-                    break;
-                case 3:
+                player.SpendRessources();
+                Component[] gears = GetComponentsInChildren<GearRotation>();
+                foreach (GearRotation gear in gears)
+                    gear.Activation();
 
-                    PlayerManager.Instance.ActivateCargo();
-                    PlayerManager.Instance.UpgradeLifeBar();
-                    PlayerManager.Instance.NextOutpostIndex();
-                    break;
-                case 4:
-                    PlayerManager.Instance.ActivateCargoUpgrade();
-                    PlayerManager.Instance.UpgradeRessourcesBar();
-                    PlayerManager.Instance.NextOutpostIndex();
-                    break;
-                case 5:
-                    PlayerManager.Instance.UpgradeLifeBar();
-                    PlayerManager.Instance.UpgradeRessourcesBar();
-                    PlayerManager.Instance.NextOutpostIndex();
-                    break;
+                switch (m_OutPostIndex)
+                {
+                    case 1:
+                        player.ActivateAntenna();
+                        break;
+                    case 2:
+                        player.NextOutpostIndex();
+                        player.UpgradeAntenna();
+                        break;
+                    case 3:
+                        player.ActivateCargo();
+                        player.UpgradeLifeBar();
+                        player.NextOutpostIndex();
+                        break;
+                    case 4:
+                        player.ActivateCargoUpgrade();
+                        player.UpgradeRessourcesBar();
+                        player.NextOutpostIndex();
+                        break;
+                    case 5:
+                        player.UpgradeLifeBar();
+                        player.UpgradeRessourcesBar();
+                        player.NextOutpostIndex();
+                        break;
+                }
+
             }
-
         }
     }
 }

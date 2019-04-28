@@ -662,8 +662,25 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 7692342591331062376, guid: 8abb71e311ae33249a1d2c93e8e20073,
+        type: 3}
+      propertyPath: m_OutPostIndex
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8abb71e311ae33249a1d2c93e8e20073, type: 3}
+--- !u!114 &456175761 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7692342591331062376, guid: 8abb71e311ae33249a1d2c93e8e20073,
+    type: 3}
+  m_PrefabInstance: {fileID: 456175760}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba988094985e78e4d9f22c04b65d59b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &501206327
 GameObject:
   m_ObjectHideFlags: 0
@@ -1923,26 +1940,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1002448749958243803, guid: 8abb71e311ae33249a1d2c93e8e20073,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1002448749958243803, guid: 8abb71e311ae33249a1d2c93e8e20073,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1002448749958243803, guid: 8abb71e311ae33249a1d2c93e8e20073,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7692342591331062376, guid: 8abb71e311ae33249a1d2c93e8e20073,
-        type: 3}
-      propertyPath: m_OutPostIndex
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8abb71e311ae33249a1d2c93e8e20073, type: 3}
 --- !u!114 &1468340885 stripped
@@ -2297,7 +2294,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Outposts.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 456175761}
     - target: {fileID: 5158908969540371525, guid: eba1aaeaf8ee83149ab2a9c70e8defd0,
         type: 3}
       propertyPath: m_Outposts.Array.data[2]
@@ -2342,6 +2339,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5158908969514515066, guid: eba1aaeaf8ee83149ab2a9c70e8defd0,
+        type: 3}
+      propertyPath: m_Value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eba1aaeaf8ee83149ab2a9c70e8defd0, type: 3}

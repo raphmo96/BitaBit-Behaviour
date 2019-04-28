@@ -8,8 +8,7 @@ public class Consumables : MonoBehaviour
 
     private void OnTriggerEnter(Collider aOther)
     {
-        PlayerManager.Instance.AddRessources(0.1f);
+        GameManager.Instance.Player.AddRessources(0.1f);
         Destroy(gameObject);
-
     }
 }

@@ -2,83 +2,69 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioManager : Singleton<AudioManager>
+public class AudioManager : MonoBehaviour
 {
-    [SerializeField] private AudioSource m_SFXAudioSource;
-    [SerializeField] private AudioSource m_MusicAudioSource;
-    [SerializeField] private StringAudioClipDictionary m_Tracks;
-    [SerializeField] private StringAudioClipDictionary m_SFX;
-
-    protected override void Awake()
+    private static AudioManager m_Instance;
+    public static AudioManager Instance
     {
-        base.Awake();
-        PoolManager.Instance.CreatePool(EPoolType.SFXAudioPT, 20);
-    }
-
-    private IEnumerator SwitchMusicRoutine(float a_Duration, AudioClip a_NextClip)
-    {
-        float volume = m_MusicAudioSource.volume;
-        
-        yield return null;
-        
-        if (a_Duration <= 0)
+        get
         {
-            yield break;
-        }
-        
-        while (m_MusicAudioSource.volume > 0)
-        {
-            m_MusicAudioSource.volume -= Time.deltaTime / a_Duration;
-            yield return null;
-        }
-        
-        m_MusicAudioSource.clip = a_NextClip;
-        m_MusicAudioSource.Play();
-
-        while (m_MusicAudioSource.volume < volume)
-        {
-            m_MusicAudioSource.volume += Time.deltaTime / a_Duration;
-            yield return null;
+            return m_Instance;
         }
     }
 
-    public void SwitchMusic(float a_Duration, string a_KeyTrack)
-    {
-        AudioClip nextClip = m_Tracks[a_KeyTrack];
+    [SerializeField]
+    private AudioSource m_AudioSourceMusic;
 
-        StartCoroutine(SwitchMusicRoutine(a_Duration, nextClip));
-    }
+    [SerializeField]
+    private GameObject m_SFX;
 
-    public void PlaySFX(AudioClip a_SFX, Vector3 a_Position, Transform a_Parent = null)
+    [SerializeField]
+    private AudioClip m_MainMenuMusic;
+    [SerializeField]
+    private AudioClip m_GameMusic;
+
+
+    private void Awake()
     {
-        SFXAudio audio = PoolManager.Instance.GetFromPool(EPoolType.SFXAudioPT, a_Position).GetComponent<SFXAudio>();
-        
-        if (a_Parent != null)
+        if (m_Instance != null)
         {
-            audio.gameObject.transform.SetParent(a_Parent);
+            Destroy(gameObject);
         }
-        
-        audio.Setup(a_SFX);
-        audio.Play();
-    }
-
-    public void PlaySFX(string a_SFX, Vector3 a_Position, Transform a_Parent = null)
-    {
-        SFXAudio audio = PoolManager.Instance.GetFromPool(EPoolType.SFXAudioPT, a_Position).GetComponent<SFXAudio>();
-        
-        if (a_Parent != null)
+        else
         {
-            audio.gameObject.transform.SetParent(a_Parent);
+            m_Instance = this;
         }
-        
-        audio.Setup(m_SFX[a_SFX]);
-        audio.Play();
+
+        DontDestroyOnLoad(gameObject);
     }
 
-    public void PlayAudibleCue(AudioClip a_SFX)
+    public void PlayMusic(string aAudioSource)
     {
-        m_SFXAudioSource.clip = a_SFX;
-        m_SFXAudioSource.Play();
+        if(aAudioSource == "MainMenu")
+        {
+            if(aAudioSource != null)
+            {
+                m_AudioSourceMusic.Stop();
+            }
+            m_AudioSourceMusic.clip = m_MainMenuMusic;
+            m_AudioSourceMusic.Play();
+        }
+    }
+
+    public void StopMusic()
+    {
+        if (m_AudioSourceMusic != null)
+        {
+            m_AudioSourceMusic.Stop();
+        }
+    }
+
+    public void PlaySFX(AudioClip aClip, Vector3 aPosition)
+    {
+        GameObject audio = Instantiate(m_SFX, aPosition, new Quaternion());
+        audio.GetComponent<SFXAudio>().Setup(aClip);
+        audio.GetComponent<SFXAudio>().Play();
     }
 }
 

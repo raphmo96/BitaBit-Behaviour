@@ -11,7 +11,7 @@ public class SceneLoadingManager : Singleton<SceneLoadingManager>
     [SerializeField] private float m_LoadingFadeTime = 1f;
     [SerializeField] private TextMeshProUGUI m_LoadingText;
     [SerializeField] private Image m_LoadingScreen;
-    [SerializeField] private Image m_LoadingIcon;
+   // [SerializeField] private Image m_LoadingIcon;
 
     private bool m_IsLoaded;
     private UnityEvent m_OnChangeScene;
@@ -61,7 +61,7 @@ public class SceneLoadingManager : Singleton<SceneLoadingManager>
 
             m_LoadingText.color = tempColor;
             m_LoadingScreen.color = tempColor;
-            m_LoadingIcon.color = tempColor;
+           // m_LoadingIcon.color = tempColor;
 
             m_CurrentTime += Time.deltaTime;
             yield return new WaitForEndOfFrame();
@@ -82,7 +82,7 @@ public class SceneLoadingManager : Singleton<SceneLoadingManager>
 
             m_LoadingText.color = tempColor;
             m_LoadingScreen.color = tempColor;
-            m_LoadingIcon.color = tempColor;
+           // m_LoadingIcon.color = tempColor;
 
             m_CurrentTime += Time.deltaTime;
             yield return new WaitForEndOfFrame();

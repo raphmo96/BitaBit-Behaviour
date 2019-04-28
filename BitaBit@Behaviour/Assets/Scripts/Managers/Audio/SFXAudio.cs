@@ -2,23 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SFXAudio : PoolableItem
+[RequireComponent(typeof(AudioSource))]
+public class SFXAudio : MonoBehaviour
 {
-    [SerializeField]
     private AudioSource m_AudioSource;
 
-    private float m_Counter;
-    private float m_Duration;
+    private float m_Counter = 0f;
+    private float m_Duration = 3f;
 
-    public void Setup(AudioClip a_Clip)
+    private void Awake()
     {
-        m_AudioSource.clip = a_Clip;
-        m_Duration = a_Clip.length;
-    }
-
-    public void Play()
-    {
-        m_AudioSource.Play();
+        m_AudioSource = gameObject.GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -26,8 +20,18 @@ public class SFXAudio : PoolableItem
         m_Counter += Time.deltaTime;
         if (m_Counter > m_Duration)
         {
-            PoolManager.Instance.ReturnToPool(EPoolType.SFXAudioPT, gameObject);
+            Destroy(gameObject);
         }
     }
 
+    public void Setup(AudioClip i_Clip)
+    {
+        m_AudioSource.clip = i_Clip;
+        m_Duration = i_Clip.length;
+    }
+
+    public void Play()
+    {
+        m_AudioSource.Play();
+    }
 }
