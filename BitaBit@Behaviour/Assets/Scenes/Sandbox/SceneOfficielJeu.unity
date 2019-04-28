@@ -1039,16 +1039,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 7820351315133916718, guid: 981975db475e1e8488d146362d663ed8,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7820351314201542731, guid: 981975db475e1e8488d146362d663ed8,
-        type: 3}
-      propertyPath: m_ConnectedAnchor.x
-      value: -0.4999962
-      objectReference: {fileID: 0}
     - target: {fileID: 7820351314474151323, guid: 981975db475e1e8488d146362d663ed8,
         type: 3}
       propertyPath: m_ConnectedAnchor.z
@@ -1068,6 +1058,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConnectedAnchor.z
       value: 0.70000076
+      objectReference: {fileID: 0}
+    - target: {fileID: 7820351315133916718, guid: 981975db475e1e8488d146362d663ed8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7820351314201542731, guid: 981975db475e1e8488d146362d663ed8,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.4999962
       objectReference: {fileID: 0}
     - target: {fileID: 7820351314886550983, guid: 981975db475e1e8488d146362d663ed8,
         type: 3}
@@ -1094,6 +1094,19 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 282027534}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &282027538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282027537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ce47d75bfad30a41bce2a09e2b0f7d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RotSpeed: 1
 --- !u!1 &337197155
 GameObject:
   m_ObjectHideFlags: 0

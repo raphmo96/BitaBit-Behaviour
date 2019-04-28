@@ -22,7 +22,9 @@ public class OutpostShop : MonoBehaviour
 
     private void OnTriggerEnter(Collider aOther)
     {
-        PlayerManager player = aOther.GetComponent<PlayerManager>();
+        PlayerManager player = GameManager.Instance.Player;
+        
+
         if (player != null)
         {
 
