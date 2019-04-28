@@ -5,6 +5,18 @@ using UnityEngine;
 [RequireComponent(typeof(SphereCollider))]
 public class OutpostShop : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject m_Player;
+
+    [SerializeField]
+    private AudioClip m_FactoryLoop;
+    private AudioSource m_AudioSource;
+
+    private bool m_PlaySFX;
+
+    [SerializeField]
+    private float m_DistanceToPlay = 250f;
+
     private SphereCollider m_Collider;
 
     [SerializeField]
@@ -16,27 +28,49 @@ public class OutpostShop : MonoBehaviour
 
     private void Start()
     {
+        m_AudioSource = GetComponent<AudioSource>();
         m_Collider = GetComponent<SphereCollider>();
         m_Collider.radius = m_ShopRadius;
     }
 
+    private void Update()
+    {
+        if(m_PlaySFX)
+        {
+            if(!GameManager.Instance.Player.Spend)
+            {
+                m_AudioSource.Stop();
+                m_PlaySFX = false;
+            }
+        }
+        else
+        {
+            if (GameManager.Instance.Player.Spend)
+            {
+                m_AudioSource.clip = m_FactoryLoop;
+                m_AudioSource.Play();
+                m_PlaySFX = true;
+            }
+        }
+    }
+
     private void OnTriggerEnter(Collider aOther)
     {
-        PlayerManager player = GameManager.Instance.Player;
-        
+        PlayerManager player = GameManager.Instance.Player;        
 
         if (player != null)
         {
+           
 
-            if (!m_IsDiscovered)
-            {
-                m_IsDiscovered = true;
+           m_IsDiscovered = true;
 
-                player.SpendRessources();
-                Component[] gears = GetComponentsInChildren<GearRotation>();
-                foreach (GearRotation gear in gears)
+           player.SpendRessources();
+           Component[] gears = GetComponentsInChildren<GearRotation>();
+           foreach (GearRotation gear in gears)
                     gear.Activation();
 
+           if (!m_IsDiscovered)
+           {
                 switch (m_OutPostIndex)
                 {
                     case 1:

@@ -31,7 +31,6 @@ public class Antenna : MonoBehaviour
         if (GameManager.Instance.Player.GetOutpostIndex() + 1 > GameManager.Instance.Player.m_Outposts.Count)
         {
             transform.LookAt(GameManager.Instance.Player.m_Outposts[GameManager.Instance.Player.GetOutpostIndex() + 1].transform.position);
-
         }
     }
 

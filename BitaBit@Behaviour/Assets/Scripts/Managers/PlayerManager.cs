@@ -24,19 +24,22 @@ public class PlayerManager : MonoBehaviour
     private float m_LifeValue = 1.0f;
     private float m_RessourcesValue = 0.0f;
 
-    private float m_TransferTime = 150.0f;
+    private float m_TransferTime = 1000.0f;
 
     private float m_LerpValue = 0f;
 
     [SerializeField]
     private bool m_SpendRessources = false;
+    public bool Spend
+    {
+        get { return m_SpendRessources; }
+    }
 
     public List<OutpostShop> m_Outposts = new List<OutpostShop>();
     private int m_OutpostIndex = 0;
 
     private void Start()
     {
-        
         m_LifeSlider.value = m_LifeValue;
         m_RessourceSlider.value = m_RessourcesValue;
         m_Panel.SetActive(false);
@@ -93,7 +96,6 @@ public class PlayerManager : MonoBehaviour
     {
         m_RessourceSlider.maxValue += 0.2f;
         m_RessourceSlider.gameObject.transform.localScale += new Vector3(0.2f, 0f, 0f);
-
     }    
 
     private IEnumerator ShowText(string text)
