@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject m_ChooseMenu;
+    [SerializeField]
+    private GameObject m_Button;
     private void Start()
     {
         AudioManager.Instance.PlayMusic("MainMenu");
@@ -11,6 +15,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        SceneLoadingManager.Instance.ChangeScene(EScenes.Game);
+        m_Button.SetActive(false);
+        m_ChooseMenu.SetActive(true);
     }
 }
