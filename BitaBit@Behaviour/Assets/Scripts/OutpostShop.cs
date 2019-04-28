@@ -56,10 +56,7 @@ public class OutpostShop : MonoBehaviour
         PlayerManager player = GameManager.Instance.Player;        
 
         if (player != null)
-        {
-           
-
-           m_IsDiscovered = true;
+        {            
 
            player.SpendRessources();
            Component[] gears = GetComponentsInChildren<GearRotation>();
@@ -68,18 +65,22 @@ public class OutpostShop : MonoBehaviour
 
            if (!m_IsDiscovered)
            {
+                m_IsDiscovered = true;
                 switch (m_OutPostIndex)
                 {
                     case 1:
                         player.ActivateAntenna();
+                        player.UpgradeAntenna();
+                        player.NextOutpostIndex();
                         break;
                     case 2:
                         player.NextOutpostIndex();
-                        player.UpgradeAntenna();
+                        player.UpgradeLifeBar();
+                        player.NextOutpostIndex();
                         break;
                     case 3:
                         player.ActivateCargo();
-                        player.UpgradeLifeBar();
+                        player.UpgradeRessourcesBar();
                         player.NextOutpostIndex();
                         break;
                     case 4:
@@ -90,7 +91,7 @@ public class OutpostShop : MonoBehaviour
                     case 5:
                         player.UpgradeLifeBar();
                         player.UpgradeRessourcesBar();
-                        player.NextOutpostIndex();
+
                         break;
                 }
 

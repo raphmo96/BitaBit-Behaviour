@@ -104,13 +104,14 @@ public class PlayerManager : MonoBehaviour
     {
         m_LifeSlider.maxValue += 0.2f;
         m_LifeSlider.gameObject.transform.localScale += new Vector3(0.2f, 0f, 0f);
-
+        StartCoroutine(ShowText("Life bar Upgraded"));
     }
 
     public void UpgradeRessourcesBar()
     {
         m_RessourceSlider.maxValue += 0.2f;
         m_RessourceSlider.gameObject.transform.localScale += new Vector3(0.2f, 0f, 0f);
+        StartCoroutine(ShowText("Ressource bar Upgraded"));
     }
 
     private IEnumerator DeathCoroutine()
