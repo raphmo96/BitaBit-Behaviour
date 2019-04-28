@@ -23,11 +23,15 @@ public class OutpostShop : MonoBehaviour
 
     private bool m_IsDiscovered = false;
 
+    [SerializeField]
+    private ParticleSystem m_Particles;
+
     private void Start()
     {
         m_AudioSource = GetComponent<AudioSource>();
         m_Collider = GetComponent<SphereCollider>();
         m_Collider.radius = m_ShopRadius;
+        m_Particles.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -38,6 +42,7 @@ public class OutpostShop : MonoBehaviour
             {
                 m_AudioSource.Stop();
                 m_PlaySFX = false;
+                m_Particles.gameObject.SetActive(false);
             }
         }
         else
@@ -47,6 +52,7 @@ public class OutpostShop : MonoBehaviour
                 m_AudioSource.clip = m_FactoryLoop;
                 m_AudioSource.Play();
                 m_PlaySFX = true;
+                m_Particles.gameObject.SetActive(true);
             }
         }
     }
