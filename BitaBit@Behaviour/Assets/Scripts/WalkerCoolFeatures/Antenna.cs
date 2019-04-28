@@ -6,16 +6,14 @@ public class Antenna : MonoBehaviour
 {
     private bool m_ShowDestination = false;
 
-    private Vector3 m_Destination = new Vector3();
     [SerializeField]
     private float m_RotSpeed = 1f;
 
     private void Update()
     {
-        if(m_ShowDestination)
+        if (m_ShowDestination)
         {
             ShowDestination();
-
         }
         else
         {
@@ -30,7 +28,15 @@ public class Antenna : MonoBehaviour
 
     private void ShowDestination()
     {
+        if (PlayerManager.Instance.GetOutpostIndex() + 1 > PlayerManager.Instance.m_Outposts.Count)
+        {
+            transform.LookAt(PlayerManager.Instance.m_Outposts[PlayerManager.Instance.GetOutpostIndex() + 1].transform.position);
 
+        }
     }
 
+    public void ActivateDestination()
+    {
+        m_ShowDestination = true;
+    }
 }

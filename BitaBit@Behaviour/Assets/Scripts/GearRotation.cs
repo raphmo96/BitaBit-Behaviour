@@ -5,8 +5,8 @@ using UnityEngine;
 public class GearRotation : MonoBehaviour
 {
     [SerializeField]
-    private int m_Index = 1;
-    private bool m_IsTurning = true;
+    private int m_Index;
+    private bool m_IsTurning = false;
 
     private void Update()
     {

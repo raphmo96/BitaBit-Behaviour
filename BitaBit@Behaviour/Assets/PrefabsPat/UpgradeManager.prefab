@@ -328,7 +328,7 @@ RectTransform:
   m_GameObject: {fileID: 1430164497}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.82495, y: 0.22651248, z: 1}
+  m_LocalScale: {x: 0.75116765, y: 0.21938562, z: 1}
   m_Children:
   - {fileID: 712707035}
   m_Father: {fileID: 5158908969081724122}
@@ -336,7 +336,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 250}
+  m_AnchoredPosition: {x: 0, y: 297}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1430164500
@@ -360,7 +360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0.048704147, g: 1, b: 0, a: 0.392}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1115,7 +1115,11 @@ MonoBehaviour:
   m_RessourceSlider: {fileID: 5158908969514515066}
   m_Panel: {fileID: 1430164497}
   m_Text: {fileID: 712707036}
+  m_Antenna: {fileID: 0}
+  m_Cargo: {fileID: 0}
+  m_CargoUpgrade: {fileID: 0}
   m_SpendRessources: 0
+  m_Outposts: []
 --- !u!1 &5158908969782326429
 GameObject:
   m_ObjectHideFlags: 0
