@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using InControl;
 using UnityEngine;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 public class SpiderController : MonoBehaviour
 {
@@ -12,15 +15,20 @@ public class SpiderController : MonoBehaviour
     {
         public FootController m_Foot;
         public Transform m_AnchorPoint;
+        public Quaternion m_Quaternion;
     }
 
-    public class Player
+    private class Player
     {
-        public EPlayer m_PlayerID;
-        public ELeg m_Leg;
+        public bool m_Lock;
+        public bool m_IsLocked;
         public float m_HeightInput;
         public float m_XInput;
         public float m_YInput;
+        public EPlayer m_PlayerID;
+        public ELeg m_Leg;
+        public FixedJoint m_Joint;
+        public Vector3 m_DeltaLockPos;
 
         public Player(EPlayer aPlayerID, ELeg aLegId)
         {
@@ -29,6 +37,9 @@ public class SpiderController : MonoBehaviour
             m_HeightInput = 0f;
             m_XInput = 0f;
             m_YInput = 0f;
+            m_Lock = false;
+            m_IsLocked = false;
+            m_DeltaLockPos = Vector3.zero;
         }
     }
 
@@ -45,99 +56,48 @@ public class SpiderController : MonoBehaviour
         One,Two,Three,Four
     }
 
-    [SerializeField] private float m_MaxDeviationAngle = 20f;
     [SerializeField] private float m_MaxReach = 3f;
-    [SerializeField] private float m_MaxHeight = 1f;
-    [SerializeField] private float m_MinHeight = -2f;
+    [SerializeField] private float m_Height = 1f;
     [SerializeField] private float m_Force = 10;
+    [SerializeField] private float m_LegSpeed = 2;
     [SerializeField] private LegDictionary m_LegDictionary;
     [SerializeField] private Rigidbody m_Rigidbody;
 
+    private float m_SqrdMaxReach;
     private Dictionary<EPlayer, Player> m_Players = new Dictionary<EPlayer, Player>();
     
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
+        m_SqrdMaxReach = m_MaxReach * m_MaxReach;
         m_Players[EPlayer.One] = new Player(EPlayer.One,ELeg.FrontRight);
         m_Players[EPlayer.Two] = new Player(EPlayer.One,ELeg.FrontLeft);
         m_Players[EPlayer.Three] = new Player(EPlayer.One,ELeg.BackRight);
         m_Players[EPlayer.Four] = new Player(EPlayer.One,ELeg.BackLeft);
+
+        Vector3 offset;
+        foreach (KeyValuePair<ELeg, Leg> Leg in m_LegDictionary)
+        {
+            offset = GetOffsetVector(Leg.Key);
+            Leg.Value.m_Foot.Init(m_MaxReach, m_Height, Leg.Value.m_AnchorPoint, offset*m_MaxReach);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        GetControllerInput(EPlayer.Two);
-        UpdateLeg(EPlayer.Two);
-        UpdateLeg(ELeg.FrontRight);
-        UpdateLeg(ELeg.BackLeft);
-        UpdateLeg(ELeg.BackRight);
+        if(ControllerManager.Instance.IsReady)
+        foreach (EPlayer playerID in Enum.GetValues(typeof(EPlayer)))
+        {
+            GetControllerInput(playerID);
+            UpdateLeg(playerID);
+        }
     }
 
     private void GetControllerInput(EPlayer aPlayer)
     {
-        m_Players[aPlayer].m_HeightInput = -Input.GetAxis("joystick 1 analog 5");
-        m_Players[aPlayer].m_XInput = -Input.GetAxis("joystick 1 analog 0");
-        m_Players[aPlayer].m_YInput = Input.GetAxis("joystick 1 analog 1");
-
-        if (m_Players[aPlayer].m_HeightInput != 0)
-        {
-            Debug.Log($"Input Height:{m_Players[aPlayer].m_HeightInput}");
-        }
-        if (m_Players[aPlayer].m_XInput != 0)
-        {
-            Debug.Log($"Input X:{m_Players[aPlayer].m_XInput}");
-        }
-        if (m_Players[aPlayer].m_YInput != 0)
-        {
-            Debug.Log($"Input Y:{m_Players[aPlayer].m_YInput}");
-        }
-    }
-    
-    private void UpdateLeg(ELeg aLeg)
-    {
-        Player player = m_Players[EPlayer.Two];
-        FootController foot = m_LegDictionary[aLeg].m_Foot;
-
-        if (player.m_HeightInput != 0)
-        {
-            Vector3 ForcetoAdd = transform.up * player.m_HeightInput * m_Force;
-            foot.Rigidbody.AddForce(ForcetoAdd);
-
-            if (m_LegDictionary[aLeg].m_Foot.IsOnGround)
-            {
-                m_Rigidbody.AddForceAtPosition(
-                    -ForcetoAdd,
-                    m_LegDictionary[aLeg].m_AnchorPoint.transform.position);
-            }
-        }
-
-        if (player.m_XInput != 0)
-        {
-            Vector3 ForcetoAdd = transform.forward * player.m_XInput * m_Force;
-            foot.Rigidbody.AddForce(ForcetoAdd);
-
-            if (m_LegDictionary[aLeg].m_Foot.IsOnGround)
-            {
-                m_Rigidbody.AddForceAtPosition(
-                    -ForcetoAdd,
-                    m_LegDictionary[aLeg].m_AnchorPoint.transform.position);
-            }
-        }
-        
-        if (player.m_YInput != 0)
-        {
-            Vector3 ForcetoAdd = transform.right * player.m_YInput * m_Force;
-            foot.Rigidbody.AddForce(ForcetoAdd);
-
-            if (m_LegDictionary[aLeg].m_Foot.IsOnGround)
-            {
-                m_Rigidbody.AddForceAtPosition(
-                    -ForcetoAdd,
-                    m_LegDictionary[aLeg].m_AnchorPoint.transform.position);
-            }
-        }
+        m_Players[aPlayer].m_HeightInput = ControllerManager.Instance.GetPlayerDevice(aPlayer).RightStickY;
+        m_Players[aPlayer].m_XInput = -ControllerManager.Instance.GetPlayerDevice(aPlayer).LeftStickX;
+        m_Players[aPlayer].m_YInput = ControllerManager.Instance.GetPlayerDevice(aPlayer).LeftStickY;
+        m_Players[aPlayer].m_Lock = ControllerManager.Instance.GetPlayerDevice(aPlayer).RightBumper;
     }
 
     private void UpdateLeg(EPlayer aPlayer)
@@ -145,43 +105,101 @@ public class SpiderController : MonoBehaviour
         Player player = m_Players[aPlayer];
         FootController foot = m_LegDictionary[player.m_Leg].m_Foot;
 
-        if (player.m_HeightInput != 0)
-        {
-            Vector3 ForcetoAdd = transform.up * player.m_HeightInput * m_Force;
-            foot.Rigidbody.AddForce(ForcetoAdd);
+        float powerRatio = Mathf.Clamp(1-Vector3.SqrMagnitude(foot.Rigidbody.position - m_LegDictionary[player.m_Leg].m_AnchorPoint.position)/m_SqrdMaxReach,0.4f,1f);
 
-            if (m_LegDictionary[player.m_Leg].m_Foot.IsOnGround)
+        if (!player.m_Lock)
+        {
+            if (player.m_IsLocked)
             {
-                m_Rigidbody.AddForceAtPosition(
-                    -ForcetoAdd,
-                    m_LegDictionary[player.m_Leg].m_AnchorPoint.transform.position);
+                m_LegDictionary[player.m_Leg].m_Foot.Rigidbody.isKinematic = false;
+                player.m_IsLocked = false;
+                m_LegDictionary[player.m_Leg].m_Foot.IsLocked = false;
+            }
+
+            if (player.m_HeightInput != 0)
+            {
+                Vector3 ForcetoAdd = player.m_HeightInput * transform.up * m_Force * (powerRatio);
+                foot.Rigidbody.velocity += player.m_HeightInput * transform.up*m_LegSpeed;
+
+                if (m_LegDictionary[player.m_Leg].m_Foot.IsOnGround && !m_LegDictionary[player.m_Leg].m_Foot.IsOutOfBounds)
+                {
+                    m_Rigidbody.AddForceAtPosition(
+                        ForcetoAdd.y < 0 ? -ForcetoAdd*2 : -ForcetoAdd*0.1f,
+                        m_LegDictionary[player.m_Leg].m_AnchorPoint.transform.position);
+                }
+            }
+
+            if (player.m_XInput != 0)
+            {
+                Vector3 ForcetoAdd = player.m_XInput * -transform.right;
+
+                if (m_LegDictionary[player.m_Leg].m_Foot.IsOnGround&& !m_LegDictionary[player.m_Leg].m_Foot.IsOutOfBounds)
+                {
+                    m_Rigidbody.AddForceAtPosition(
+                        -ForcetoAdd * m_Force * (powerRatio),
+                        m_LegDictionary[player.m_Leg].m_AnchorPoint.transform.position);
+                }
+                else
+                {
+                    foot.Rigidbody.velocity += ForcetoAdd * m_LegSpeed;
+                }
+            }
+
+            if (player.m_YInput != 0)
+            {
+                Vector3 ForcetoAdd = player.m_YInput * transform.forward;
+
+                if (m_LegDictionary[player.m_Leg].m_Foot.IsOnGround&& !m_LegDictionary[player.m_Leg].m_Foot.IsOutOfBounds)
+                {
+                    m_Rigidbody.AddForceAtPosition(
+                        -ForcetoAdd * m_Force * (powerRatio),
+                        m_LegDictionary[player.m_Leg].m_AnchorPoint.transform.position);
+                }
+                else
+                {
+                    foot.Rigidbody.velocity += ForcetoAdd * m_LegSpeed;
+                }
             }
         }
-
-        if (player.m_XInput != 0)
+        else
         {
-            Vector3 ForcetoAdd = transform.forward * player.m_XInput * m_Force;
-            foot.Rigidbody.AddForce(ForcetoAdd);
+            if (!player.m_IsLocked)
+            {
+                m_LegDictionary[player.m_Leg].m_Foot.Rigidbody.isKinematic = true;
+                player.m_DeltaLockPos = m_LegDictionary[player.m_Leg].m_AnchorPoint.position - m_LegDictionary[player.m_Leg].m_Foot.transform.position;
+                player.m_IsLocked = true;
+                m_LegDictionary[player.m_Leg].m_Foot.IsLocked = true;
+            }
+
+            Vector3 LockForce = (player.m_DeltaLockPos + m_LegDictionary[player.m_Leg].m_Foot.transform.position) - m_LegDictionary[player.m_Leg].m_AnchorPoint.position;
 
             if (m_LegDictionary[player.m_Leg].m_Foot.IsOnGround)
             {
                 m_Rigidbody.AddForceAtPosition(
-                    -ForcetoAdd,
+                    LockForce * 4f,
                     m_LegDictionary[player.m_Leg].m_AnchorPoint.transform.position);
             }
+            else
+            {
+                foot.Rigidbody.MovePosition(m_LegDictionary[player.m_Leg].m_AnchorPoint.transform.position+player.m_DeltaLockPos);
+            }          
         }
-        
-        if (player.m_YInput != 0)
+    }  
+    
+    private Vector3 GetOffsetVector(ELeg aLeg)
+    {
+        switch (aLeg)
         {
-            Vector3 ForcetoAdd = transform.right * player.m_YInput * m_Force;
-            foot.Rigidbody.AddForce(ForcetoAdd);
-
-            if (m_LegDictionary[player.m_Leg].m_Foot.IsOnGround)
-            {
-                m_Rigidbody.AddForceAtPosition(
-                    -ForcetoAdd,
-                    m_LegDictionary[player.m_Leg].m_AnchorPoint.transform.position);
-            }
+            case ELeg.FrontRight:
+                return Vector3.forward + Vector3.right;
+            case ELeg.FrontLeft:
+                return Vector3.forward + Vector3.left;
+            case ELeg.BackRight:
+                return Vector3.back + Vector3.right;
+            case ELeg.BackLeft:
+                return Vector3.back + Vector3.left;
+            default:
+                return Vector3.zero;
         }
     }
 }
