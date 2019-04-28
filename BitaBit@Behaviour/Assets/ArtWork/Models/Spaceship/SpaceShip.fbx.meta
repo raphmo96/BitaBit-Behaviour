@@ -1,0 +1,162 @@
+fileFormatVersion: 2
+guid: 7fe1f59fa3aacae41bc5348d782ef38e
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: bumper
+    100002: engine
+    100004: enginecircle
+    100006: enginecircletwo
+    100008: enginepolish
+    100010: leftwing
+    100012: right
+    100014: //RootNode
+    100016: EN
+    100018: EN1
+    100020: EN2
+    100022: EN3
+    100024: LW
+    100026: Right
+    400000: bumper
+    400002: engine
+    400004: enginecircle
+    400006: enginecircletwo
+    400008: enginepolish
+    400010: leftwing
+    400012: right
+    400014: //RootNode
+    400016: EN
+    400018: EN1
+    400020: EN2
+    400022: EN3
+    400024: LW
+    400026: Right
+    2100000: lambert1
+    2300000: bumper
+    2300002: engine
+    2300004: enginecircle
+    2300006: enginecircletwo
+    2300008: enginepolish
+    2300010: leftwing
+    2300012: right
+    2300014: //RootNode
+    2300016: EN
+    2300018: EN1
+    2300020: EN2
+    2300022: EN3
+    2300024: LW
+    2300026: Right
+    3300000: bumper
+    3300002: engine
+    3300004: enginecircle
+    3300006: enginecircletwo
+    3300008: enginepolish
+    3300010: leftwing
+    3300012: right
+    3300014: //RootNode
+    3300016: EN
+    3300018: EN1
+    3300020: EN2
+    3300022: EN3
+    3300024: LW
+    3300026: Right
+    4300000: Ship
+    4300002: right
+    4300004: bumper
+    4300006: leftwing
+    4300008: engine
+    4300010: enginecircle
+    4300012: enginecircletwo
+    4300014: enginepolish
+    4300016: LW
+    4300018: Right
+    4300020: EN3
+    4300022: EN2
+    4300024: EN1
+    4300026: EN
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

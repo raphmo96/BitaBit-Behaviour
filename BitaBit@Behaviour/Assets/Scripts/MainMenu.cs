@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour
     private GameObject m_Button;
     private void Start()
     {
+        m_ChooseMenu.SetActive(false);
         AudioManager.Instance.PlayMusic("MainMenu");
     }
 
