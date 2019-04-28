@@ -22,7 +22,6 @@ public class FootController : MonoBehaviour
         set => m_IsLocked = value;
     }
 
-
     private bool m_IsOnGround;
     private bool m_IsOutOfBounds;
     private bool m_IsLocked;
@@ -58,17 +57,24 @@ public class FootController : MonoBehaviour
         m_IsOutOfBounds = CheckBoundsLimit();    
         
         transform.rotation = m_Anchor.rotation * m_InitialAngle;
-        
-        
-            if (m_IsOutOfBounds)
-            {
-                m_Rigidbody.MovePosition((m_Anchor.position+m_Offset) + m_TargetPos);
-            }
+          
+        if (m_IsOutOfBounds)
+        {
+            Vector3 offset = m_Anchor.forward * m_Offset.z;
+            offset += m_Anchor.right * m_Offset.x;
+            offset += m_Anchor.up * m_Offset.y;
+            
+            m_Rigidbody.MovePosition((m_Anchor.position+offset) + m_TargetPos);
+        }
     }
 
     private bool CheckBoundsLimit()
     {
-        Vector3 delta = transform.position - (m_Anchor.position + m_Offset);
+        Vector3 offset = m_Anchor.forward * m_Offset.z;
+        offset += m_Anchor.right * m_Offset.x;
+        offset += m_Anchor.up * m_Offset.y;
+        
+        Vector3 delta = transform.position - (m_Anchor.position + offset);
             
         if (Vector3.SqrMagnitude(Vector3.Project(delta, m_Anchor.up)) > m_ReachSqrd && !m_IsLocked)
         {
@@ -84,6 +90,6 @@ public class FootController : MonoBehaviour
 
     private bool CheckGroundCollision()
     {
-        return Physics.CheckSphere(transform.position, 0.1f,LayerMask.GetMask("World"));
+        return Physics.CheckSphere(transform.position, 0.5f,LayerMask.GetMask("World"));
     }
 }
