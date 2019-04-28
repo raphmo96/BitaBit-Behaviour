@@ -38,6 +38,9 @@ public class PlayerManager : Singleton<PlayerManager>
         m_LifeSlider.value = m_LifeValue;
         m_RessourceSlider.value = m_RessourcesValue;
         m_Panel.SetActive(false);
+        m_Antenna.SetActive(false);
+        m_Cargo.SetActive(false);
+        m_CargoUpgrade.SetActive(false);
     }
 
     private void Update()
@@ -79,14 +82,14 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         m_LifeSlider.maxValue += 0.2f;
         m_LifeSlider.gameObject.transform.localScale += new Vector3(0.2f, 0f, 0f);
-        StartCoroutine(ShowText("Life bar upgraded"));
+
     }
 
     public void UpgradeRessourcesBar()
     {
         m_RessourceSlider.maxValue += 0.2f;
         m_RessourceSlider.gameObject.transform.localScale += new Vector3(0.2f, 0f, 0f);
-        StartCoroutine(ShowText("Ressource bar upgraded"));
+
     }    
 
     private IEnumerator ShowText(string text)
@@ -94,23 +97,32 @@ public class PlayerManager : Singleton<PlayerManager>
         m_Panel.SetActive(true);
         m_Text.text = text;
 
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(1.0f);
         m_Panel.SetActive(false);
+    }
+
+    public void UpgradeAntenna()
+    {
+        StartCoroutine(ShowText("Antenna Upgraded"));
+        m_Antenna.GetComponent<Antenna>().ActivateDestination();
     }
 
     public void ActivateAntenna()
     {
         m_Antenna.SetActive(true);
+        StartCoroutine(ShowText("Antenna Activated"));
     }
 
     public void ActivateCargo()
     {
         m_Cargo.SetActive(true);
+        StartCoroutine(ShowText("Cargo Built"));
     }
 
     public void ActivateCargoUpgrade()
     {
         m_CargoUpgrade.SetActive(true);
+        StartCoroutine(ShowText("Cargo Upgraded"));
     }
 
     public void NextOutpostIndex()

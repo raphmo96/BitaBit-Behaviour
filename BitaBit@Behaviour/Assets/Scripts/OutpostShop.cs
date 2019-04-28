@@ -10,7 +10,9 @@ public class OutpostShop : MonoBehaviour
     [SerializeField]
     private int m_OutPostIndex;
 
-    private float m_ShopRadius = 5.0f;
+    private float m_ShopRadius = 3.0f;
+
+    private bool m_IsDiscovered = false;
 
     private void Start()
     {
@@ -26,37 +28,44 @@ public class OutpostShop : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<FootController>())
+        if (!m_IsDiscovered)
         {
+            m_IsDiscovered = true;
 
             PlayerManager.Instance.SpendRessources();
-            GetComponentInChildren<GearRotation>().Activation();
+            Component[] gears = GetComponentsInChildren<GearRotation>();
+            foreach (GearRotation gear in gears)
+                gear.Activation();
 
             switch (m_OutPostIndex)
             {
-                case 0:
+                case 1:
                     PlayerManager.Instance.ActivateAntenna();
                     break;
-                case 1:
-                    PlayerManager.Instance.UpgradeLifeBar();
-                    PlayerManager.Instance.ActivateCargo();
-                    PlayerManager.Instance.NextOutpostIndex();
-                    PlayerManager.Instance.m_Antenna.GetComponent<Antenna>().ActivateDestination();
-                    break;
                 case 2:
-                    PlayerManager.Instance.UpgradeRessourcesBar();
-                    PlayerManager.Instance.ActivateCargoUpgrade();
+
                     PlayerManager.Instance.NextOutpostIndex();
+                    PlayerManager.Instance.UpgradeAntenna();
+                    
                     break;
                 case 3:
+
+                    PlayerManager.Instance.ActivateCargo();
                     PlayerManager.Instance.UpgradeLifeBar();
                     PlayerManager.Instance.NextOutpostIndex();
                     break;
                 case 4:
+                    PlayerManager.Instance.ActivateCargoUpgrade();
+                    PlayerManager.Instance.UpgradeRessourcesBar();
+                    PlayerManager.Instance.NextOutpostIndex();
+                    break;
+                case 5:
+                    PlayerManager.Instance.UpgradeLifeBar();
                     PlayerManager.Instance.UpgradeRessourcesBar();
                     PlayerManager.Instance.NextOutpostIndex();
                     break;
             }
+
         }
     }
 }
