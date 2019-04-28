@@ -483,6 +483,7 @@ MonoBehaviour:
   m_AudioSourceMusic: {fileID: 1123589636}
   m_SFX: {fileID: 8632748488537231143, guid: 674a2c8f9ca48634ea17af3930280a9c, type: 3}
   m_MainMenuMusic: {fileID: 8300000, guid: 755ec95478b9e4017885f747de9c8d05, type: 3}
+  m_GameMusic: {fileID: 0}
 --- !u!4 &1123589635
 Transform:
   m_ObjectHideFlags: 0
