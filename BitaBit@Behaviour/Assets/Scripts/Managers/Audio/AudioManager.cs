@@ -41,13 +41,18 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic(string aAudioSource)
     {
-        if(aAudioSource == "MainMenu")
+        if (aAudioSource != null)
         {
-            if(aAudioSource != null)
-            {
-                m_AudioSourceMusic.Stop();
-            }
+            m_AudioSourceMusic.Stop();
+        }
+        if (aAudioSource == "MainMenu")
+        {
             m_AudioSourceMusic.clip = m_MainMenuMusic;
+            m_AudioSourceMusic.Play();
+        }
+        else if(aAudioSource == "Game")
+        {
+            m_AudioSourceMusic.clip = m_GameMusic;
             m_AudioSourceMusic.Play();
         }
     }
