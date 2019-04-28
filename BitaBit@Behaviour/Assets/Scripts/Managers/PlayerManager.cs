@@ -36,7 +36,7 @@ public class PlayerManager : MonoBehaviour
 
     private void Start()
     {
-        AudioManager.Instance.PlayMusic("SceneOfficielJeu");
+        
         m_LifeSlider.value = m_LifeValue;
         m_RessourceSlider.value = m_RessourcesValue;
         m_Panel.SetActive(false);
@@ -44,6 +44,7 @@ public class PlayerManager : MonoBehaviour
         m_Cargo.SetActive(false);
         m_CargoUpgrade.SetActive(false);
         GameManager.Instance.Player = this;
+        AudioManager.Instance.PlayMusic("Game");
     }
 
     private void Update()
