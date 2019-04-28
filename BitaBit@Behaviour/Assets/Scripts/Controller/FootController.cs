@@ -58,14 +58,12 @@ public class FootController : MonoBehaviour
         m_IsOutOfBounds = CheckBoundsLimit();    
         
         transform.rotation = m_Anchor.rotation * m_InitialAngle;
-    }
-
-    private void FixedUpdate()
-    {
-        if (m_IsOutOfBounds)
-        {
-            m_Rigidbody.MovePosition((m_Anchor.position+m_Offset) + m_TargetPos);
-        }
+        
+        
+            if (m_IsOutOfBounds)
+            {
+                m_Rigidbody.MovePosition((m_Anchor.position+m_Offset) + m_TargetPos);
+            }
     }
 
     private bool CheckBoundsLimit()

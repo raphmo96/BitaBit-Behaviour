@@ -20,9 +20,13 @@ public class PlayerManager : MonoBehaviour
     private GameObject m_Cargo;
     [SerializeField]
     private GameObject m_CargoUpgrade;
+    [SerializeField]
+    private GameObject m_DeathPanel;
 
     private float m_LifeValue = 1.0f;
     private float m_RessourcesValue = 0.0f;
+
+    private bool m_IsDead = false;
 
     private float m_TransferTime = 1000.0f;
 
@@ -42,6 +46,7 @@ public class PlayerManager : MonoBehaviour
     {
         m_LifeSlider.value = m_LifeValue * 0.5f;
         m_RessourceSlider.value = m_RessourcesValue;
+        m_DeathPanel.SetActive(false);
         m_Panel.SetActive(false);
         m_Antenna.SetActive(false);
         m_Cargo.SetActive(false);
@@ -66,11 +71,21 @@ public class PlayerManager : MonoBehaviour
                 m_LerpValue = 0f;
             }
         }
+
+        if (m_LifeSlider.value <= 0)
+        {       
+            if (!m_IsDead)
+            {
+                m_IsDead = true;
+                m_DeathPanel.SetActive(true);
+                StartCoroutine(DeathCoroutine());
+            }
+        }
     }
 
     private void SetSliderValues()
     {
-        m_RessourceSlider.value -= m_LerpValue ;
+        m_RessourceSlider.value -= m_LerpValue;
         m_LifeSlider.value += m_LerpValue;
     }
 
@@ -89,14 +104,33 @@ public class PlayerManager : MonoBehaviour
     {
         m_LifeSlider.maxValue += 0.2f;
         m_LifeSlider.gameObject.transform.localScale += new Vector3(0.2f, 0f, 0f);
-
+        StartCoroutine(ShowText("Life bar Upgraded"));
     }
 
     public void UpgradeRessourcesBar()
     {
         m_RessourceSlider.maxValue += 0.2f;
         m_RessourceSlider.gameObject.transform.localScale += new Vector3(0.2f, 0f, 0f);
-    }    
+        StartCoroutine(ShowText("Ressource bar Upgraded"));
+    }
+
+    private IEnumerator DeathCoroutine()
+    {
+        yield return new WaitForSeconds(1.0f);
+        StartCoroutine(ShowText("Restarting in 5"));
+        yield return new WaitForSeconds(1.0f);
+        StartCoroutine(ShowText("Restarting in 4"));
+        yield return new WaitForSeconds(1.0f);
+        StartCoroutine(ShowText("Restarting in 3"));
+        yield return new WaitForSeconds(1.0f);
+        StartCoroutine(ShowText("Restarting in 2"));
+        yield return new WaitForSeconds(1.0f);
+        StartCoroutine(ShowText("Restarting in 1"));
+        m_DeathPanel.SetActive(false);
+        yield return new WaitForSeconds(1.0f);
+        // Reload scene
+        SceneLoadingManager.Instance.ChangeScene(EScenes.Game);
+    }
 
     private IEnumerator ShowText(string text)
     {

@@ -28,11 +28,9 @@ public class Antenna : MonoBehaviour
 
     private void ShowDestination()
     {
-        if (GameManager.Instance.Player.GetOutpostIndex() + 1 > GameManager.Instance.Player.m_Outposts.Count)
-        {
-            transform.LookAt(GameManager.Instance.Player.m_Outposts[GameManager.Instance.Player.GetOutpostIndex()].transform.position);
 
-        }
+        transform.LookAt(GameManager.Instance.Player.m_Outposts[GameManager.Instance.Player.GetOutpostIndex()].transform.position);
+
     }
 
     public void ActivateDestination()
