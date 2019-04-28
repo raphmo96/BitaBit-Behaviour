@@ -277,6 +277,7 @@
           <e p="OutpostShop.cs" t="Include" />
           <e p="ShittyController.cs" t="Include" />
           <e p="Singleton.cs" t="Include" />
+          <e p="WaitToChangeScene.cs" t="Include" />
           <e p="WalkerCoolFeatures" t="Include">
             <e p="Antenna.cs" t="Include" />
             <e p="MaterialMover.cs" t="Include" />

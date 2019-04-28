@@ -50,7 +50,6 @@ public class StartMenu : MonoBehaviour
         if (m_ActivatedDevices >= 4)
         {
 	        ControllerManager.Instance.IsReady = true;
-	        Destroy(gameObject);
         }
     }
 
@@ -62,7 +61,7 @@ public class StartMenu : MonoBehaviour
             m_TextTimer.text = i + "...";
             yield return new WaitForSeconds(1f);
         }
-        SceneLoadingManager.Instance.ChangeScene(EScenes.Game);
+        SceneLoadingManager.Instance.ChangeScene(EScenes.Timeline);
         yield return null;
     }
 }
