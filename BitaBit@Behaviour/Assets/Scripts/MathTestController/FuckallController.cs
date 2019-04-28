@@ -12,7 +12,6 @@ public class FuckallController : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.Q))
         {
-            Debug.Log("Rotate Left");
             m_Forearms[0].AddForce(-m_Forearms[0].transform.right * m_RotationForce * Time.deltaTime * 100);
         }
         if(Input.GetKey(KeyCode.W))
@@ -27,7 +26,14 @@ public class FuckallController : MonoBehaviour
         {
             m_Forearms[0].AddForce(-m_Forearms[0].transform.forward * m_ElevationForce * Time.deltaTime * 100);
         }
-
+        if (Input.GetKey(KeyCode.Z))
+        {
+            m_Forearms[0].AddForce(m_Forearms[0].transform.up * m_ElevationForce * Time.deltaTime * 100);
+        }
+        if (Input.GetKey(KeyCode.X))
+        {
+            m_Forearms[0].AddForce(-m_Forearms[0].transform.up * m_ElevationForce * Time.deltaTime * 100);
+        }
 
 
         if (Input.GetKey(KeyCode.E))
