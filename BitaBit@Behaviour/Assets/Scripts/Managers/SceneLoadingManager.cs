@@ -36,17 +36,17 @@ public class SceneLoadingManager : Singleton<SceneLoadingManager>
         SceneManager.sceneLoaded += OnLoadingDone;
         LoadSceneMode mode = a_IsSingle ? LoadSceneMode.Single : LoadSceneMode.Additive;
         
-        if (a_IsSingle)
+        /*if (a_IsSingle)
         {
             StartCoroutine(Loading(a_SceneID, mode));
         }
         else
-        {
+        {*/
             SceneManager.LoadScene((int)a_SceneID, mode);
-        }
+        //}
     }
 
-    private IEnumerator Loading(EScenes a_Name, LoadSceneMode a_Mode)
+    /*private IEnumerator Loading(EScenes a_Name, LoadSceneMode a_Mode)
     {
         float m_CurrentTime = 0f;
         Color tempColor = Color.clear;
@@ -89,5 +89,5 @@ public class SceneLoadingManager : Singleton<SceneLoadingManager>
         }
         m_LoadingScreen.gameObject.SetActive(false);
         m_LoadingText.gameObject.SetActive(false);
-    }
+    }*/
 }

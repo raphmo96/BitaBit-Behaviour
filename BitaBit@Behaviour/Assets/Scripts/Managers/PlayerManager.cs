@@ -100,6 +100,11 @@ public class PlayerManager : MonoBehaviour
         m_RessourceSlider.value += ressValue;
     }
 
+    public void LoseLife(float aPercent)
+    {
+        m_LifeSlider.value -= aPercent * 0.01f;
+    }
+
     public void UpgradeLifeBar()
     {
         m_LifeSlider.maxValue += 0.2f;

@@ -9,12 +9,25 @@ public class StartMenu : MonoBehaviour
 {
     private int m_ActivatedDevices = 0;
 
+    [SerializeField]
+    private List<GameObject> m_PressX;
+    [SerializeField]
+    private List<GameObject> m_ControllerIcon;
+
+    [SerializeField]
+    private TextMeshProUGUI m_TextTimer;
+
 	private void Start()
 	{
+        m_TextTimer.gameObject.SetActive(false);
+        for(int i = 0; i < m_ControllerIcon.Count; i++)
+        {
+            m_ControllerIcon[i].SetActive(false);
+        }
         ControllerManager.Instance.ResetPlayerDevice();
 	}
 
-	void Update () 
+	private void Update () 
 	{
         InputDevice controller = InputManager.ActiveDevice;
 
@@ -22,7 +35,13 @@ public class StartMenu : MonoBehaviour
         {
             ControllerManager.Instance.SetPlayerDevice((SpiderController.EPlayer)m_ActivatedDevices,controller);
 			Debug.Log("REMOTE ADDED");
+            m_PressX[m_ActivatedDevices].SetActive(false);
+            m_ControllerIcon[m_ActivatedDevices].SetActive(true);
             m_ActivatedDevices++;
+            if(m_ActivatedDevices == 4)
+            {
+                StartCoroutine(StartGame());
+            }
         }
         else
         {
@@ -33,5 +52,17 @@ public class StartMenu : MonoBehaviour
 	        ControllerManager.Instance.IsReady = true;
 	        Destroy(gameObject);
         }
+    }
+
+    private IEnumerator StartGame()
+    {
+        m_TextTimer.gameObject.SetActive(true);
+        for (int i = 3; i > 0; i--)
+        {
+            m_TextTimer.text = i + "...";
+            yield return new WaitForSeconds(1f);
+        }
+        SceneLoadingManager.Instance.ChangeScene(EScenes.Game);
+        yield return null;
     }
 }

@@ -106,6 +106,7 @@ public class SpiderController : MonoBehaviour
         FootController foot = m_LegDictionary[player.m_Leg].m_Foot;
 
         float powerRatio = Mathf.Clamp(1-Vector3.SqrMagnitude(foot.Rigidbody.position - m_LegDictionary[player.m_Leg].m_AnchorPoint.position)/m_SqrdMaxReach,0.4f,1f);
+        float lifeSpent = 0;
 
         if (!player.m_Lock)
         {
@@ -118,7 +119,9 @@ public class SpiderController : MonoBehaviour
 
             if (player.m_HeightInput != 0)
             {
-                Vector3 ForcetoAdd = player.m_HeightInput * transform.up * m_Force * (powerRatio);
+                lifeSpent += player.m_HeightInput;
+                
+                Vector3 ForcetoAdd = player.m_HeightInput * m_Rigidbody.transform.up * m_Force * (powerRatio);
                 foot.Rigidbody.velocity += player.m_HeightInput * transform.up*m_LegSpeed;
 
                 if (m_LegDictionary[player.m_Leg].m_Foot.IsOnGround && !m_LegDictionary[player.m_Leg].m_Foot.IsOutOfBounds)
@@ -126,18 +129,23 @@ public class SpiderController : MonoBehaviour
                     m_Rigidbody.AddForceAtPosition(
                         ForcetoAdd.y < 0 ? -ForcetoAdd*2 : -ForcetoAdd*0.1f,
                         m_LegDictionary[player.m_Leg].m_AnchorPoint.transform.position);
+                    m_Rigidbody.AddForce(ForcetoAdd.y < 0 ? -ForcetoAdd*2 : Vector3.zero);
                 }
             }
 
             if (player.m_XInput != 0)
             {
-                Vector3 ForcetoAdd = player.m_XInput * -transform.right;
+                lifeSpent += player.m_XInput;
+
+                
+                Vector3 ForcetoAdd = player.m_XInput * -m_Rigidbody.transform.right;
 
                 if (m_LegDictionary[player.m_Leg].m_Foot.IsOnGround&& !m_LegDictionary[player.m_Leg].m_Foot.IsOutOfBounds)
                 {
                     m_Rigidbody.AddForceAtPosition(
-                        -ForcetoAdd * m_Force * (powerRatio),
+                        -ForcetoAdd * m_Force * (powerRatio)*0.2f,
                         m_LegDictionary[player.m_Leg].m_AnchorPoint.transform.position);
+                    m_Rigidbody.AddForce(-ForcetoAdd * m_Force * powerRatio*4f);
                 }
                 else
                 {
@@ -147,19 +155,24 @@ public class SpiderController : MonoBehaviour
 
             if (player.m_YInput != 0)
             {
-                Vector3 ForcetoAdd = player.m_YInput * transform.forward;
+                lifeSpent += player.m_YInput;
+                
+                Vector3 ForcetoAdd = player.m_YInput * m_Rigidbody.transform.forward;
 
                 if (m_LegDictionary[player.m_Leg].m_Foot.IsOnGround&& !m_LegDictionary[player.m_Leg].m_Foot.IsOutOfBounds)
                 {
                     m_Rigidbody.AddForceAtPosition(
-                        -ForcetoAdd * m_Force * (powerRatio),
+                        -ForcetoAdd * m_Force * (powerRatio) *0.2f,
                         m_LegDictionary[player.m_Leg].m_AnchorPoint.transform.position);
+                    m_Rigidbody.AddForce(-ForcetoAdd * m_Force * (powerRatio)*4f);
                 }
                 else
                 {
                     foot.Rigidbody.velocity += ForcetoAdd * m_LegSpeed;
                 }
             }
+            
+            GameManager.Instance.Player.LoseLife(Mathf.Abs(lifeSpent)*0.001f);
         }
         else
         {
