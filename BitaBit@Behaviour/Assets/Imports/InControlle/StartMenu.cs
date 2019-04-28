@@ -9,7 +9,7 @@ public class StartMenu : MonoBehaviour
 {
     private int m_ActivatedDevices = 0;
 
-	private void Awake()
+	private void Start()
 	{
         ControllerManager.Instance.ResetPlayerDevice();
 	}
