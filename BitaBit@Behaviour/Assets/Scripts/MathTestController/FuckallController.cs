@@ -17,8 +17,9 @@ public class FuckallController : MonoBehaviour
 
     private void Update()
     {
+        // PLAYER 0
 
-        if(Input.GetKey(KeyCode.Q))
+        if (ControllerManager.Instance.GetPlayerDevice(0).RightStickX > 0.1f)
         {
             m_Forearms[0].AddForceAtPosition(-m_Forearms[0].transform.right * m_RotationForce * Time.deltaTime * 100, m_Forearms[0].transform.position - m_Forearms[0].transform.up * 0.5f);
             if(LegIsGrounded(0))
@@ -27,7 +28,7 @@ public class FuckallController : MonoBehaviour
             }
             //m_Forearms[0].AddForce(-m_Forearms[0].transform.right * m_RotationForce * Time.deltaTime * 100);
         }
-        if(Input.GetKey(KeyCode.W))
+        if(ControllerManager.Instance.GetPlayerDevice(0).RightStickX < -0.1f)
         {
             m_Forearms[0].AddForceAtPosition(m_Forearms[0].transform.right * m_RotationForce * Time.deltaTime * 100, m_Forearms[0].transform.position - m_Forearms[0].transform.up * 0.5f);
             if (LegIsGrounded(0))
@@ -36,47 +37,50 @@ public class FuckallController : MonoBehaviour
             }
             //m_Forearms[0].AddForce(m_Forearms[0].transform.right * m_RotationForce * Time.deltaTime * 100);
         }
-        if (Input.GetKey(KeyCode.A))
+        if (ControllerManager.Instance.GetPlayerDevice(0).RightStickY > 0.1f)
         {
             m_Forearms[0].AddForceAtPosition(m_Forearms[0].transform.forward * m_ElevationForce * Time.deltaTime * 100, m_Forearms[0].transform.position - m_Forearms[0].transform.up * 0.5f);
             RemoveSomeBodyWeightWhenStuckUnderBody(0);
         }
-        if (Input.GetKey(KeyCode.S))
+        if (ControllerManager.Instance.GetPlayerDevice(0).RightStickY < -0.1f)
         {
             m_Forearms[0].AddForceAtPosition(-m_Forearms[0].transform.forward * m_ElevationForce * Time.deltaTime * 100, m_Forearms[0].transform.position - m_Forearms[0].transform.up * 0.5f);
             RemoveSomeBodyWeight(0);
         }
 
-        if (Input.GetKey(KeyCode.E))
-        {
-            m_Forearms[1].AddForce(-m_Forearms[1].transform.right * m_RotationForce * Time.deltaTime * 100);
-            if (LegIsGrounded(1))
-            {
-                m_Forearms[1].AddForceAtPosition(m_Forearms[1].transform.up * m_RotationForce * Time.deltaTime * 50, m_Forearms[1].transform.position - m_Forearms[1].transform.up * 0.5f);
-            }
+        // PLAYER 1
 
-        }
-        if (Input.GetKey(KeyCode.R))
+        if (ControllerManager.Instance.GetPlayerDevice(SpiderController.EPlayer.Two).RightStickX > 0.1f)
         {
             m_Forearms[1].AddForce(m_Forearms[1].transform.right * m_RotationForce * Time.deltaTime * 100);
             if (LegIsGrounded(1))
             {
                 m_Forearms[1].AddForceAtPosition(m_Forearms[1].transform.up * m_RotationForce * Time.deltaTime * 50, m_Forearms[1].transform.position - m_Forearms[1].transform.up * 0.5f);
             }
+
         }
-        if (Input.GetKey(KeyCode.D))
+        if (ControllerManager.Instance.GetPlayerDevice(SpiderController.EPlayer.Two).RightStickX < -0.1f)
+        {
+            m_Forearms[1].AddForce(-m_Forearms[1].transform.right * m_RotationForce * Time.deltaTime * 100);
+            if (LegIsGrounded(1))
+            {
+                m_Forearms[1].AddForceAtPosition(m_Forearms[1].transform.up * m_RotationForce * Time.deltaTime * 50, m_Forearms[1].transform.position - m_Forearms[1].transform.up * 0.5f);
+            }
+        }
+        if (ControllerManager.Instance.GetPlayerDevice(SpiderController.EPlayer.Two).RightStickY > 0.1f)
         {
             m_Forearms[1].AddForce(m_Forearms[1].transform.forward * m_ElevationForce * Time.deltaTime * 100);
             RemoveSomeBodyWeightWhenStuckUnderBody(1);
         }
-        if (Input.GetKey(KeyCode.F))
+        if (ControllerManager.Instance.GetPlayerDevice(SpiderController.EPlayer.Two).RightStickY < -0.1f)
         {
             m_Forearms[1].AddForce(-m_Forearms[1].transform.forward * m_ElevationForce * Time.deltaTime * 100);
             RemoveSomeBodyWeight(1);
         }
 
+        // PLAYER 2
 
-        if (Input.GetKey(KeyCode.T))
+        if (ControllerManager.Instance.GetPlayerDevice(SpiderController.EPlayer.Three).RightStickX > 0.1f)
         {
             m_Forearms[2].AddForce(-m_Forearms[2].transform.right * m_RotationForce * Time.deltaTime * 100);
             if (LegIsGrounded(2))
@@ -84,7 +88,7 @@ public class FuckallController : MonoBehaviour
                 m_Forearms[2].AddForceAtPosition(m_Forearms[2].transform.up * m_RotationForce * Time.deltaTime * 50, m_Forearms[2].transform.position - m_Forearms[2].transform.up * 0.5f);
             }
         }
-        if (Input.GetKey(KeyCode.Y))
+        if (ControllerManager.Instance.GetPlayerDevice(SpiderController.EPlayer.Three).RightStickX < -0.1f)
         {
             m_Forearms[2].AddForce(m_Forearms[2].transform.right * m_RotationForce * Time.deltaTime * 100);
             if (LegIsGrounded(2))
@@ -92,27 +96,20 @@ public class FuckallController : MonoBehaviour
                 m_Forearms[2].AddForceAtPosition(m_Forearms[2].transform.up * m_RotationForce * Time.deltaTime * 50, m_Forearms[2].transform.position - m_Forearms[2].transform.up * 0.5f);
             }
         }
-        if (Input.GetKey(KeyCode.G))
+        if (ControllerManager.Instance.GetPlayerDevice(SpiderController.EPlayer.Three).RightStickY > 0.1f)
         {
             m_Forearms[2].AddForce(m_Forearms[2].transform.forward * m_ElevationForce * Time.deltaTime * 100);
             RemoveSomeBodyWeightWhenStuckUnderBody(2);
         }
-        if (Input.GetKey(KeyCode.H))
+        if (ControllerManager.Instance.GetPlayerDevice(SpiderController.EPlayer.Three).RightStickY < -0.1f)
         {
             m_Forearms[2].AddForce(-m_Forearms[2].transform.forward * m_ElevationForce * Time.deltaTime * 100);
             RemoveSomeBodyWeight(2);
         }
 
+        // PLAYER 3
 
-        if (Input.GetKey(KeyCode.U))
-        {
-            m_Forearms[3].AddForce(-m_Forearms[3].transform.right * m_RotationForce * Time.deltaTime * 100);
-            if (LegIsGrounded(3))
-            {
-                m_Forearms[3].AddForceAtPosition(m_Forearms[3].transform.up * m_RotationForce * Time.deltaTime * 50, m_Forearms[3].transform.position - m_Forearms[3].transform.up * 0.5f);
-            }
-        }
-        if (Input.GetKey(KeyCode.I))
+        if (ControllerManager.Instance.GetPlayerDevice(SpiderController.EPlayer.Four).RightStickX > 0.1f)
         {
             m_Forearms[3].AddForce(m_Forearms[3].transform.right * m_RotationForce * Time.deltaTime * 100);
             if (LegIsGrounded(3))
@@ -120,34 +117,31 @@ public class FuckallController : MonoBehaviour
                 m_Forearms[3].AddForceAtPosition(m_Forearms[3].transform.up * m_RotationForce * Time.deltaTime * 50, m_Forearms[3].transform.position - m_Forearms[3].transform.up * 0.5f);
             }
         }
-        if (Input.GetKey(KeyCode.J))
+        if (ControllerManager.Instance.GetPlayerDevice(SpiderController.EPlayer.Four).RightStickX < -0.1f)
+        {
+            m_Forearms[3].AddForce(-m_Forearms[3].transform.right * m_RotationForce * Time.deltaTime * 100);
+            if (LegIsGrounded(3))
+            {
+                m_Forearms[3].AddForceAtPosition(m_Forearms[3].transform.up * m_RotationForce * Time.deltaTime * 50, m_Forearms[3].transform.position - m_Forearms[3].transform.up * 0.5f);
+            }
+        }
+        if (ControllerManager.Instance.GetPlayerDevice(SpiderController.EPlayer.Four).RightStickY > 0.1f)
         {
             m_Forearms[3].AddForce(m_Forearms[3].transform.forward * m_ElevationForce * Time.deltaTime * 100);
             RemoveSomeBodyWeightWhenStuckUnderBody(3);
         }
-        if (Input.GetKey(KeyCode.K))
+        if (ControllerManager.Instance.GetPlayerDevice(SpiderController.EPlayer.Four).RightStickY < -0.1f)
         {
             m_Forearms[3].AddForce(-m_Forearms[3].transform.forward * m_ElevationForce * Time.deltaTime * 100);
             RemoveSomeBodyWeight(3);
         }
 
-        if (true)
-        {
-            for(int i = 0; i < m_Forearms.Count; i++)
-            {
-                AddTorqueToBeUpward(i);
-            }
-        }
+        //Stabilization
 
-        if(Input.GetKey(KeyCode.Space))
+        for(int i = 0; i < m_Forearms.Count; i++)
         {
-            m_Forearms[0].drag = 5f;
-        }
-        else
-        {
-            m_Forearms[0].drag = 10f;
-
-        }
+           AddTorqueToBeUpward(i);
+        }      
     }
 
     private void AddTorqueToBeUpward(int a_Leg)
