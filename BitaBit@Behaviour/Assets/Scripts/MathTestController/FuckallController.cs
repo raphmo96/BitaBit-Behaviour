@@ -21,12 +21,19 @@ public class FuckallController : MonoBehaviour
         if(Input.GetKey(KeyCode.Q))
         {
             m_Forearms[0].AddForceAtPosition(-m_Forearms[0].transform.right * m_RotationForce * Time.deltaTime * 100, m_Forearms[0].transform.position - m_Forearms[0].transform.up * 0.5f);
+            if(LegIsGrounded(0))
+            {
+                m_Forearms[0].AddForceAtPosition(m_Forearms[0].transform.up * m_RotationForce * Time.deltaTime * 50, m_Forearms[0].transform.position - m_Forearms[0].transform.up * 0.5f);
+            }
             //m_Forearms[0].AddForce(-m_Forearms[0].transform.right * m_RotationForce * Time.deltaTime * 100);
         }
         if(Input.GetKey(KeyCode.W))
         {
             m_Forearms[0].AddForceAtPosition(m_Forearms[0].transform.right * m_RotationForce * Time.deltaTime * 100, m_Forearms[0].transform.position - m_Forearms[0].transform.up * 0.5f);
-
+            if (LegIsGrounded(0))
+            {
+                m_Forearms[0].AddForceAtPosition(m_Forearms[0].transform.up * m_RotationForce * Time.deltaTime * 50, m_Forearms[0].transform.position - m_Forearms[0].transform.up * 0.5f);
+            }
             //m_Forearms[0].AddForce(m_Forearms[0].transform.right * m_RotationForce * Time.deltaTime * 100);
         }
         if (Input.GetKey(KeyCode.A))
@@ -40,27 +47,22 @@ public class FuckallController : MonoBehaviour
             RemoveSomeBodyWeight(0);
         }
 
-        /*
-         * No more needed I think
-         * 
-        if (Input.GetKey(KeyCode.Z))
-        {
-            m_Forearms[0].AddForce(m_Forearms[0].transform.up * m_ElevationForce * Time.deltaTime * 100);
-        }
-        if (Input.GetKey(KeyCode.X))
-        {
-            m_Forearms[0].AddForce(-m_Forearms[0].transform.up * m_ElevationForce * Time.deltaTime * 100);
-        }
-        */
-
-
         if (Input.GetKey(KeyCode.E))
         {
             m_Forearms[1].AddForce(-m_Forearms[1].transform.right * m_RotationForce * Time.deltaTime * 100);
+            if (LegIsGrounded(1))
+            {
+                m_Forearms[1].AddForceAtPosition(m_Forearms[1].transform.up * m_RotationForce * Time.deltaTime * 50, m_Forearms[1].transform.position - m_Forearms[1].transform.up * 0.5f);
+            }
+
         }
         if (Input.GetKey(KeyCode.R))
         {
             m_Forearms[1].AddForce(m_Forearms[1].transform.right * m_RotationForce * Time.deltaTime * 100);
+            if (LegIsGrounded(1))
+            {
+                m_Forearms[1].AddForceAtPosition(m_Forearms[1].transform.up * m_RotationForce * Time.deltaTime * 50, m_Forearms[1].transform.position - m_Forearms[1].transform.up * 0.5f);
+            }
         }
         if (Input.GetKey(KeyCode.D))
         {
@@ -77,10 +79,18 @@ public class FuckallController : MonoBehaviour
         if (Input.GetKey(KeyCode.T))
         {
             m_Forearms[2].AddForce(-m_Forearms[2].transform.right * m_RotationForce * Time.deltaTime * 100);
+            if (LegIsGrounded(2))
+            {
+                m_Forearms[2].AddForceAtPosition(m_Forearms[2].transform.up * m_RotationForce * Time.deltaTime * 50, m_Forearms[2].transform.position - m_Forearms[2].transform.up * 0.5f);
+            }
         }
         if (Input.GetKey(KeyCode.Y))
         {
             m_Forearms[2].AddForce(m_Forearms[2].transform.right * m_RotationForce * Time.deltaTime * 100);
+            if (LegIsGrounded(2))
+            {
+                m_Forearms[2].AddForceAtPosition(m_Forearms[2].transform.up * m_RotationForce * Time.deltaTime * 50, m_Forearms[2].transform.position - m_Forearms[2].transform.up * 0.5f);
+            }
         }
         if (Input.GetKey(KeyCode.G))
         {
@@ -97,10 +107,18 @@ public class FuckallController : MonoBehaviour
         if (Input.GetKey(KeyCode.U))
         {
             m_Forearms[3].AddForce(-m_Forearms[3].transform.right * m_RotationForce * Time.deltaTime * 100);
+            if (LegIsGrounded(3))
+            {
+                m_Forearms[3].AddForceAtPosition(m_Forearms[3].transform.up * m_RotationForce * Time.deltaTime * 50, m_Forearms[3].transform.position - m_Forearms[3].transform.up * 0.5f);
+            }
         }
         if (Input.GetKey(KeyCode.I))
         {
             m_Forearms[3].AddForce(m_Forearms[3].transform.right * m_RotationForce * Time.deltaTime * 100);
+            if (LegIsGrounded(3))
+            {
+                m_Forearms[3].AddForceAtPosition(m_Forearms[3].transform.up * m_RotationForce * Time.deltaTime * 50, m_Forearms[3].transform.position - m_Forearms[3].transform.up * 0.5f);
+            }
         }
         if (Input.GetKey(KeyCode.J))
         {
@@ -171,7 +189,13 @@ public class FuckallController : MonoBehaviour
                 m_MainBody.AddForce(m_MainBody.transform.up * m_ForceToStabilize * Time.deltaTime * 60f);
             }
 
-            m_Forearms[a_Leg].AddTorque(m_Forearms[a_Leg].transform.right* m_TorqueToStabilize * Time.deltaTime, ForceMode.Force);
+            m_Forearms[a_Leg].AddTorque(m_Forearms[a_Leg].transform.right* m_TorqueToStabilize * Time.deltaTime *100f, ForceMode.Force);
         }
     }
+
+    private bool LegIsGrounded(int a_Leg)
+    {
+        return Physics.Raycast(m_Forearms[a_Leg].transform.position, -m_Forearms[a_Leg].transform.up, 1.25f, LayerMask.GetMask("Ground"));
+    }
+
 }
