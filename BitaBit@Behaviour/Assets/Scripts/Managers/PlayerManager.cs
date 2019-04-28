@@ -40,7 +40,7 @@ public class PlayerManager : MonoBehaviour
 
     private void Start()
     {
-        m_LifeSlider.value = m_LifeValue;
+        m_LifeSlider.value = m_LifeValue * 0.5f;
         m_RessourceSlider.value = m_RessourcesValue;
         m_Panel.SetActive(false);
         m_Antenna.SetActive(false);
