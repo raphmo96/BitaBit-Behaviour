@@ -10,7 +10,7 @@ public class GearRotation : MonoBehaviour
 
     private void Update()
     {
-        if(m_IsTurning)
+        if(m_IsTurning && GameManager.Instance.Player.Spend)
         {
             transform.Rotate(Vector3.forward * m_Index);
         }
