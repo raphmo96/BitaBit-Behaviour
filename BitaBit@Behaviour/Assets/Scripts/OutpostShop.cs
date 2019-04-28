@@ -26,7 +26,7 @@ public class OutpostShop : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<SpiderController>())
+        if (other.gameObject.GetComponent<FootController>())
         {
 
             PlayerManager.Instance.SpendRessources();
